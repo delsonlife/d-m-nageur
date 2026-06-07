@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TransitPro – Déménagement Paris & Île-de-France</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: #fff; color: #1e293b; overflow-x: hidden; }
+h1,h2,h3 { font-family: 'Cormorant Garamond', serif; }
+a { text-decoration: none; }
+
+/* === LAYOUT === */
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.block { display: block; }
+.hidden { display: none !important; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.grid-cols-2 { grid-template-columns: repeat(2,1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3,1fr); }
+
+/* === GAP === */
+.gap-1 { gap: 4px; } .gap-2 { gap: 8px; } .gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; } .gap-6 { gap: 24px; } .gap-8 { gap: 32px; }
+
+/* === PADDING === */
+.p-3{padding:12px}.p-4{padding:16px}.p-5{padding:20px}.p-6{padding:24px}.p-8{padding:32px}
+.px-2{padding-left:8px;padding-right:8px}.px-3{padding-left:12px;padding-right:12px}
+.px-4{padding-left:16px;padding-right:16px}.px-5{padding-left:20px;padding-right:20px}
+.py-1{padding-top:4px;padding-bottom:4px}.py-2{padding-top:8px;padding-bottom:8px}
+.py-2\.5{padding-top:10px;padding-bottom:10px}
+.py-3{padding-top:12px;padding-bottom:12px}.py-8{padding-top:32px;padding-bottom:32px}
+.py-10{padding-top:40px;padding-bottom:40px}.py-14{padding-top:56px;padding-bottom:56px}
+.py-16{padding-top:64px;padding-bottom:64px}.py-20{padding-top:80px;padding-bottom:80px}
+.py-24{padding-top:96px;padding-bottom:96px}
+.pt-6{padding-top:24px}.pt-20{padding-top:80px}.pb-8{padding-bottom:32px}
+
+/* === MARGIN === */
+.-mt-0\.5{margin-top:-2px}.mt-1{margin-top:4px}.mt-2{margin-top:8px}.mt-3{margin-top:12px}
+.mt-4{margin-top:16px}.mt-6{margin-top:24px}.mt-8{margin-top:32px}.mt-14{margin-top:56px}
+.mb-1{margin-bottom:4px}.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}
+.mb-4{margin-bottom:16px}.mb-5{margin-bottom:20px}.mb-6{margin-bottom:24px}
+.mb-8{margin-bottom:32px}.mb-10{margin-bottom:40px}.mb-12{margin-bottom:48px}
+.mx-auto{margin-left:auto;margin-right:auto}
+
+/* === SIZE === */
+.w-4{width:16px}.w-5{width:20px}.w-6{width:24px}.w-9{width:36px}.w-10{width:40px}.w-px{width:1px}
+.h-2{height:8px}.h-4{height:16px}.h-9{height:36px}.h-10{height:40px}.h-12{height:48px}
+
+/* === MAX-WIDTH === */
+.max-w-xs{max-width:320px}.max-w-md{max-width:448px}.max-w-xl{max-width:576px}
+.max-w-2xl{max-width:672px}.max-w-3xl{max-width:768px}
+.max-w-5xl{max-width:1024px}.max-w-6xl{max-width:1152px}
+
+/* === POSITION === */
+.fixed{position:fixed}.top-0{top:0}.left-0{left:0}.right-0{right:0}.z-40{z-index:40}
+
+/* === TYPOGRAPHY === */
+.text-xs{font-size:12px;line-height:16px}.text-sm{font-size:14px;line-height:20px}
+.text-base{font-size:16px;line-height:24px}.text-lg{font-size:18px;line-height:28px}
+.text-xl{font-size:20px;line-height:28px}.text-2xl{font-size:24px;line-height:32px}
+.text-3xl{font-size:30px;line-height:36px}.text-4xl{font-size:36px;line-height:40px}
+.text-5xl{font-size:48px;line-height:1}.text-6xl{font-size:60px;line-height:1}
+.font-light{font-weight:300}.font-medium{font-weight:500}
+.font-semibold{font-weight:600}.font-bold{font-weight:700}
+.italic{font-style:italic}.uppercase{text-transform:uppercase}
+.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}
+.leading-tight{line-height:1.25}.leading-relaxed{line-height:1.625}
+.text-center{text-align:center}.whitespace-nowrap{white-space:nowrap}
+
+/* === TEXT COLORS === */
+.text-white{color:#fff}.text-slate-200{color:#e2e8f0}.text-slate-300{color:#cbd5e1}
+.text-slate-400{color:#94a3b8}.text-slate-500{color:#64748b}.text-slate-600{color:#475569}
+.text-amber-400{color:#fbbf24}.text-amber-600{color:#d97706}
+.text-amber-700{color:#b45309}.text-amber-800{color:#92400e}
+.text-green-700{color:#15803d}
+.text-navy-600{color:#2e44ea}.text-navy-700{color:#1e30d4}.text-navy-800{color:#1a28ab}
+.text-navy-900{color:#1a2787}.text-navy-950{color:#111750}
+
+/* === BG COLORS === */
+.bg-white{background-color:#fff}.bg-slate-50{background-color:#f8fafc}
+.bg-slate-200{background-color:#e2e8f0}.bg-slate-700{background-color:#334155}
+.bg-navy-100{background-color:#dde6ff}.bg-navy-200{background-color:#c3d0ff}
+.bg-navy-950{background-color:#111750}
+.bg-amber-100{background-color:#fef3c7}.bg-amber-400{background-color:#fbbf24}
+.bg-green-100{background-color:#dcfce7}
+.bg-gradient-to-br{background-image:linear-gradient(135deg,var(--tw-gradient-from,transparent),var(--tw-gradient-to,transparent))}
+.from-navy-700{--tw-gradient-from:#1e30d4}.to-navy-950{--tw-gradient-to:#111750}
+
+/* === BORDER === */
+.border{border:1px solid}.border-2{border-width:2px;border-style:solid}
+.border-t{border-top:1px solid}
+.border-slate-200{border-color:#e2e8f0}.border-slate-800{border-color:#1e293b}
+.border-navy-200{border-color:#c3d0ff}
+
+/* === BORDER RADIUS === */
+.rounded-full{border-radius:9999px}.rounded-xl{border-radius:12px}.rounded-lg{border-radius:8px}
+
+/* === SHADOW === */
+.shadow-sm{box-shadow:0 1px 2px rgba(0,0,0,.05)}
+
+/* === SPACE-Y === */
+.space-y-0>*+*{margin-top:0}.space-y-3>*+*{margin-top:12px}.space-y-4>*+*{margin-top:16px}
+
+/* === TRANSITIONS === */
+.transition-colors{transition:color .2s,background-color .2s,border-color .2s}
+
+/* === ANIMATE BOUNCE === */
+.animate-bounce{animation:tw-bounce 1s infinite}
+@keyframes tw-bounce{
+  0%,100%{transform:translateY(-20%);animation-timing-function:cubic-bezier(.8,0,1,1)}
+  50%{transform:translateY(0);animation-timing-function:cubic-bezier(0,0,.2,1)}
+}
+
+/* === ACCENT === */
+.accent-amber-500{accent-color:#f59e0b}
+
+/* === HOVER === */
+.hover\:bg-amber-300:hover{background-color:#fcd34d}
+.hover\:border-navy-600:hover{border-color:#2e44ea}
+.hover\:text-amber-300:hover{color:#fcd34d}
+.hover\:text-navy-700:hover{color:#1e30d4}
+.hover\:text-slate-300:hover{color:#cbd5e1}
+
+/* === RESPONSIVE md breakpoint (768px) === */
+@media(min-width:768px){
+  .md\:block{display:block}
+  .md\:flex{display:flex}
+  .md\:flex-row{flex-direction:row}
+  .md\:gap-16{gap:64px}
+  .md\:grid-cols-3{grid-template-columns:repeat(3,1fr)}
+  .md\:p-8{padding:32px}
+  .md\:px-8{padding-left:32px;padding-right:32px}
+  .md\:text-5xl{font-size:48px;line-height:1}
+  .md\:text-7xl{font-size:72px;line-height:1}
+  .md\:text-xl{font-size:20px;line-height:28px}
+}
+</style>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; background: #fff; color: #1e293b; overflow-x: hidden; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+
+  /* NAV */
+  .nav-glass { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(0,0,0,0.08); }
+
+  /* HERO */
+  .hero-bg {
+    background: linear-gradient(135deg, rgba(17,23,80,0.82) 0%, rgba(30,41,171,0.65) 60%, rgba(17,23,80,0.75) 100%),
+      url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+    min-height: 100vh;
+  }
+  .hero-badge { background: rgba(251,191,36,0.18); border: 1px solid rgba(251,191,36,0.4); }
+
+  /* WIZARD */
+  .wizard-card { background: #fff; border-radius: 20px; box-shadow: 0 20px 60px rgba(17,23,80,0.12); }
+  .step-icon { transition: all .3s; }
+  .step-icon.active { background: #1e30d4; color: #fff; box-shadow: 0 4px 16px rgba(30,48,212,0.35); }
+  .step-icon.done { background: #1a2787; color: #fff; }
+  .step-icon.pending { background: #f1f5f9; color: #94a3b8; }
+
+  /* Item cards */
+  .item-card { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; transition: all .2s; }
+  .item-card:hover { border-color: #9db3ff; box-shadow: 0 4px 16px rgba(30,48,212,0.08); }
+  .qty-btn { background: #1e30d4; color: #fff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; cursor: pointer; border: none; transition: all .15s; user-select: none; }
+  .qty-btn:hover { background: #1a28ab; transform: scale(1.05); }
+  .qty-btn.minus { background: #e2e8f0; color: #475569; }
+  .qty-btn.minus:hover { background: #cbd5e1; }
+
+  /* Truck bar */
+  .truck-bar-fill { background: linear-gradient(90deg, #1e30d4, #4a63f5); border-radius: 99px; transition: width .5s cubic-bezier(.4,0,.2,1); height: 8px; }
+
+  /* Access cards */
+  .access-card { border: 2px solid #e2e8f0; border-radius: 14px; cursor: pointer; transition: all .2s; }
+  .access-card.selected { border-color: #1e30d4; background: #f0f4ff; }
+  .access-card:hover:not(.selected) { border-color: #9db3ff; }
+
+  /* Toggle buttons */
+  .toggle-btn { border: 1.5px solid #e2e8f0; border-radius: 99px; padding: 8px 24px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 14px; transition: all .2s; background: #fff; color: #475569; }
+  .toggle-btn.active { background: #1e30d4; border-color: #1e30d4; color: #fff; }
+
+  /* Price panel */
+  .price-panel { background: #111750; border-radius: 16px; }
+  .price-big { font-size: 52px; font-weight: 800; font-family: 'Montserrat', sans-serif; color: #fff; line-height: 1; }
+  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: rgba(255,255,255,0.7); }
+  .price-row:last-child { border-bottom: none; }
+
+  /* Steps nav */
+  .nav-step { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+  .nav-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all .3s; }
+
+  /* Form inputs */
+  .form-input { width: 100%; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 12px 16px; font-family: 'Montserrat', sans-serif; font-size: 15px; color: #1e293b; outline: none; transition: border-color .2s; background: #f8fafc; }
+  .form-input:focus { border-color: #1e30d4; background: #fff; box-shadow: 0 0 0 3px rgba(30,48,212,0.08); }
+  .form-label { font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; display: block; }
+
+  /* Buttons */
+  .btn-primary { background: linear-gradient(135deg, #1e30d4 0%, #2e44ea 100%); color: #fff; border-radius: 10px; padding: 14px 28px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 8px; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(30,48,212,0.3); }
+  .btn-secondary { background: transparent; color: #64748b; border: none; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 8px 0; transition: color .2s; }
+  .btn-secondary:hover { color: #1e30d4; }
+  .btn-cta { background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: #111750; border-radius: 12px; padding: 16px 32px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; border: none; cursor: pointer; transition: all .25s; letter-spacing: .01em; box-shadow: 0 8px 32px rgba(245,158,11,0.35); }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245,158,11,0.45); }
+
+  /* Pricing cards */
+  .pricing-card { border-radius: 20px; border: 2px solid #e2e8f0; transition: all .25s; }
+  .pricing-card.featured { border-color: #1e30d4; background: linear-gradient(160deg, #111750 0%, #1e2a90 100%); color: #fff; transform: scale(1.04); }
+  .pricing-card:hover:not(.featured) { border-color: #9db3ff; transform: translateY(-4px); box-shadow: 0 16px 48px rgba(17,23,80,0.1); }
+
+  /* Stars */
+  .star { color: #fbbf24; font-size: 20px; }
+
+  /* Testimonial */
+  .testi-card { background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; }
+
+  /* Success */
+  .success-anim { animation: bounceIn .5s cubic-bezier(.36,.07,.19,.97); }
+  @keyframes bounceIn { 0%{transform:scale(.7);opacity:0} 60%{transform:scale(1.05)} 80%{transform:scale(.97)} 100%{transform:scale(1);opacity:1} }
+
+  /* Urgent badge */
+  .urgent-card { background: #fffbeb; border: 1.5px solid #fbbf24; border-radius: 14px; cursor: pointer; transition: all .2s; }
+  .urgent-card.selected { background: #fef3c7; border-color: #f59e0b; }
+
+  /* Scroll progress connector */
+  .step-connector { width: 2px; height: 20px; background: #e2e8f0; margin: 2px auto; }
+
+  /* Movers */
+  .mover-card { border: 2px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; cursor: pointer; transition: all .2s; }
+  .mover-card.selected { border-color: #1e30d4; background: #f0f4ff; }
+
+  /* Mobile menu */
+  .mobile-menu { display: none; }
+  @media (max-width: 768px) {
+    .hero-bg { min-height: 85vh; }
+    .price-big { font-size: 38px; }
+    .pricing-card.featured { transform: scale(1); }
+    .btn-cta { font-size: 14px; padding: 14px 22px; }
+  }
+
+  /* Fade in sections */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s, transform .6s; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  /* Sticky phone */
+  .sticky-phone { position: fixed; bottom: 24px; right: 24px; z-index: 50; background: #25d366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); font-size: 26px; text-decoration: none; transition: transform .2s; }
+  .sticky-phone:hover { transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════ -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-40 py-3 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-navy-700 to-navy-950 flex items-center justify-center">
+        <span class="text-white text-lg">🚚</span>
+      </div>
+      <div>
+        <span class="font-bold text-navy-950 text-lg tracking-tight">Transit<span class="text-navy-700">Pro</span></span>
+        <div class="text-xs text-slate-400 font-medium -mt-0.5">Déménagement & Transport</div>
+      </div>
+    </div>
+    <!-- Right -->
+    <div class="flex items-center gap-3">
+      <a href="tel:+33142000000" class="hidden md:flex items-center gap-2 text-navy-900 font-semibold text-sm hover:text-navy-700 transition-colors">
+        <span class="text-lg">📞</span> 01 42 00 00 00
+      </a>
+      <a href="#estimateur" class="btn-cta text-sm py-2.5 px-5 rounded-xl">Devis Gratuit</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="hero-bg flex flex-col items-center justify-center text-center px-4 pt-20">
+  <div class="max-w-3xl mx-auto py-24">
+    <div class="hero-badge inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6">
+      <span class="text-amber-400 text-sm font-semibold">⭐ 4.9/5 · +1 200 déménagements réalisés</span>
+    </div>
+    <h1 class="text-white text-5xl md:text-7xl font-bold leading-tight mb-5">
+      Votre déménagement<br>
+      <em class="font-light italic">en toute sérénité</em>
+    </h1>
+    <p class="text-slate-200 text-lg md:text-xl font-light mb-10 max-w-xl mx-auto">
+      Prix fixe, sans surprise. Équipe professionnelle assurée. Réponse sous 2 heures.
+    </p>
+    <a href="#estimateur" class="btn-cta inline-flex items-center gap-3 text-lg">
+      <span>🧮</span> Calculer mon volume et tarif
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p class="text-slate-300 text-sm mt-4 font-medium">Estimation instantanée · Sans engagement</p>
+
+    <!-- Trust badges -->
+    <div class="flex flex-wrap justify-center gap-6 mt-14">
+      <div class="flex items-center gap-2 text-white">
+        <span class="text-2xl">🛡️</span>
+        <span class="text-sm font-medium">Assuré AXA</span>
+      </div>
+      <div class="flex items-center gap-2 text-white">
+        <span class="text-2xl">✅</span>
+        <span class="text-sm font-medium">Prix fixe garanti</span>
+      </div>
+      <div class="flex items-center gap-2 text-white">
+        <span class="text-2xl">⚡</span>
+        <span class="text-sm font-medium">Disponible 7j/7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrow bounce -->
+  <div class="pb-8 animate-bounce">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION ESTIMATEUR
+════════════════════════════════════════════════ -->
+<section id="estimateur" class="bg-slate-50 py-16 px-4">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-10 fade-up">
+      <p class="text-navy-700 font-semibold text-sm uppercase tracking-widest mb-2">Outil d'estimation</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-navy-950">Votre prix en 5 étapes</h2>
+      <p class="text-slate-500 mt-3 max-w-md mx-auto">Prix fixe, calculé en temps réel. Aucun frais caché.</p>
+    </div>
+
+    <div class="wizard-card max-w-2xl mx-auto p-6 md:p-8">
+
+      <!-- Step progress dots -->
+      <div class="flex items-center justify-center gap-2 mb-8" id="stepNav">
+        <!-- Generated by JS -->
+      </div>
+
+      <!-- ─── STEP 1: Villes ─── -->
+      <div id="step1" class="step-content">
+        <h3 class="text-2xl font-bold text-navy-950 mb-1">D'où à où ?</h3>
+        <p class="text-slate-400 text-sm mb-6">Saisissez vos villes de départ et d'arrivée.</p>
+
+        <div class="space-y-4 mb-6">
+          <div>
+            <label class="form-label">📍 Ville de départ</label>
+            <input id="villeDepart" type="text" class="form-input" placeholder="Ex: Paris 75001">
+          </div>
+          <div>
+            <label class="form-label">📍 Ville d'arrivée</label>
+            <input id="villeArrivee" type="text" class="form-input" placeholder="Ex: Lyon 69001">
+          </div>
+          <div>
+            <label class="form-label">📏 Distance estimée (km)</label>
+            <input id="distanceKm" type="number" class="form-input" placeholder="Ex: 30" min="1" value="30">
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <button class="btn-primary" onclick="nextStep(2)">
+            Suivant <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 2: Objets ─── -->
+      <div id="step2" class="step-content hidden">
+        <h3 class="text-2xl font-bold text-navy-950 mb-1">Que transportez-vous ?</h3>
+        <p class="text-slate-400 text-sm mb-6">Sélectionnez vos meubles et leur quantité.</p>
+
+        <div id="itemGrid" class="grid grid-cols-2 gap-3 mb-4">
+          <!-- Generated by JS -->
+        </div>
+
+        <!-- Custom item -->
+        <div class="flex gap-2 mb-5">
+          <input id="customItemName" type="text" class="form-input text-sm" placeholder="Ajouter un objet personnalisé…" style="flex:1">
+          <button onclick="addCustomItem()" class="btn-primary py-2 px-4 text-sm rounded-lg whitespace-nowrap">+ Ajouter</button>
+        </div>
+
+        <!-- Truck fill -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-slate-500 flex items-center gap-1">🚚 Remplissage camion 12m³ — Voyage 1</span>
+            <span id="truckPct" class="font-bold text-navy-800 text-sm">0%</span>
+          </div>
+          <div class="bg-slate-200 rounded-full h-2">
+            <div id="truckFill" class="truck-bar-fill" style="width:0%"></div>
+          </div>
+          <p class="text-xs text-amber-600 mt-2 flex items-center gap-1">
+            <span>⚠️</span> Ceci est une estimation. Le prix peut varier si un deuxième voyage est nécessaire.
+          </p>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <button class="btn-secondary" onclick="nextStep(1)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour
+          </button>
+          <button class="btn-primary" onclick="nextStep(3)">
+            Continuer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 3: Accès & Étages ─── -->
+      <div id="step3" class="step-content hidden">
+        <h3 class="text-2xl font-bold text-navy-950 mb-1">Étages et accès</h3>
+        <p class="text-slate-400 text-sm mb-6">Précisez les conditions d'accès.</p>
+
+        <!-- Access type -->
+        <div class="space-y-3 mb-6">
+          <div id="acc-trottoir" class="access-card p-4 selected" onclick="selectAccess('trottoir')">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🚶</span>
+              <div>
+                <div class="font-semibold text-navy-900 text-sm">Trottoir à trottoir</div>
+                <div class="text-xs text-slate-400">Chargement et déchargement au pied de l'immeuble</div>
+              </div>
+            </div>
+          </div>
+          <div id="acc-etage" class="access-card p-4" onclick="selectAccess('etage')">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🏢</span>
+              <div>
+                <div class="font-semibold text-navy-900 text-sm">Avec montée en étage</div>
+                <div class="text-xs text-slate-400">Transport jusqu'à l'appartement</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floors (shown if etage selected) -->
+        <div id="floorSection" class="hidden">
+          <div class="grid grid-cols-2 gap-4 mb-5">
+            <div class="bg-slate-50 rounded-xl p-4">
+              <p class="font-semibold text-navy-800 text-sm mb-3">Départ — Étage</p>
+              <div class="flex items-center gap-3">
+                <button class="qty-btn minus" onclick="changeFloor('depart',-1)">−</button>
+                <span id="floorDepart" class="font-bold text-navy-950 text-lg w-6 text-center">0</span>
+                <button class="qty-btn" onclick="changeFloor('depart',1)">+</button>
+              </div>
+              <p class="text-xs text-slate-400 mt-2">Ascenseur ?</p>
+              <div class="flex gap-2 mt-1">
+                <button id="ascDepartOui" class="toggle-btn active" onclick="setAsc('depart', true)">Oui</button>
+                <button id="ascDepartNon" class="toggle-btn" onclick="setAsc('depart', false)">Non</button>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-4">
+              <p class="font-semibold text-navy-800 text-sm mb-3">Arrivée — Étage</p>
+              <div class="flex items-center gap-3">
+                <button class="qty-btn minus" onclick="changeFloor('arrivee',-1)">−</button>
+                <span id="floorArrivee" class="font-bold text-navy-950 text-lg w-6 text-center">0</span>
+                <button class="qty-btn" onclick="changeFloor('arrivee',1)">+</button>
+              </div>
+              <p class="text-xs text-slate-400 mt-2">Ascenseur ?</p>
+              <div class="flex gap-2 mt-1">
+                <button id="ascArriveeOui" class="toggle-btn active" onclick="setAsc('arrivee', true)">Oui</button>
+                <button id="ascArriveeNon" class="toggle-btn" onclick="setAsc('arrivee', false)">Non</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Urgent -->
+        <div id="urgentCard" class="urgent-card p-4 mb-6" onclick="toggleUrgent()">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="urgentCheck" class="w-4 h-4 accent-amber-500">
+            <span class="text-xl">⚡</span>
+            <div>
+              <div class="font-semibold text-amber-800 text-sm">Transport urgent (+20%)</div>
+              <div class="text-xs text-amber-600">Livraison dans les prochaines heures</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <button class="btn-secondary" onclick="nextStep(2)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour
+          </button>
+          <button class="btn-primary" onclick="nextStep(4)">
+            Continuer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 4: Déménageurs ─── -->
+      <div id="step4" class="step-content hidden">
+        <h3 class="text-2xl font-bold text-navy-950 mb-1">Nombre de déménageurs</h3>
+        <p class="text-slate-400 text-sm mb-6">Choisissez selon le volume de vos affaires.</p>
+
+        <div class="grid grid-cols-3 gap-3 mb-6">
+          <div id="m1" class="mover-card selected" onclick="selectMovers(1)">
+            <div class="text-3xl mb-2">🧍</div>
+            <div class="font-bold text-navy-950 text-sm">1 déménageur</div>
+            <div class="text-xs text-slate-400 mt-1">Studio / petit volume</div>
+          </div>
+          <div id="m2" class="mover-card" onclick="selectMovers(2)">
+            <div class="text-3xl mb-2">👥</div>
+            <div class="font-bold text-navy-950 text-sm">2 déménageurs</div>
+            <div class="text-xs text-slate-400 mt-1">Recommandé</div>
+          </div>
+          <div id="m3" class="mover-card" onclick="selectMovers(3)">
+            <div class="text-3xl mb-2">👨‍👨‍👦</div>
+            <div class="font-bold text-navy-950 text-sm">3 déménageurs</div>
+            <div class="text-xs text-slate-400 mt-1">Grand appartement</div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <button class="btn-secondary" onclick="nextStep(3)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour
+          </button>
+          <button class="btn-primary" onclick="nextStep(5)">
+            Continuer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 5: Date + Infos ─── -->
+      <div id="step5" class="step-content hidden">
+        <div id="step5Form">
+          <h3 class="text-2xl font-bold text-navy-950 mb-1">Date et coordonnées</h3>
+          <p class="text-slate-400 text-sm mb-6">Quand souhaitez-vous planifier votre déménagement ?</p>
+
+          <div class="space-y-4 mb-6">
+            <div>
+              <label class="form-label">📅 Date souhaitée</label>
+              <input id="dateDemena" type="date" class="form-input">
+            </div>
+            <div>
+              <label class="form-label">🕐 Heure souhaitée</label>
+              <select id="heureDemena" class="form-input">
+                <option>08:00</option><option>09:00</option><option>10:00</option>
+                <option>11:00</option><option>12:00</option><option>14:00</option>
+                <option>15:00</option><option>16:00</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">👤 Votre nom</label>
+              <input id="nomClient" type="text" class="form-input" placeholder="Jean Dupont">
+            </div>
+            <div>
+              <label class="form-label">📱 Téléphone</label>
+              <input id="telClient" type="tel" class="form-input" placeholder="06 12 34 56 78">
+            </div>
+          </div>
+
+          <!-- Summary badge -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-5">
+            <p class="text-xs text-slate-500 mb-1">Récapitulatif</p>
+            <div class="flex flex-wrap gap-2 text-xs font-medium">
+              <span id="summaryFrom" class="bg-navy-100 text-navy-800 px-2 py-1 rounded-full"></span>
+              <span id="summaryTo" class="bg-navy-100 text-navy-800 px-2 py-1 rounded-full"></span>
+              <span id="summaryVol" class="bg-amber-100 text-amber-800 px-2 py-1 rounded-full"></span>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center">
+            <button class="btn-secondary" onclick="nextStep(4)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour
+            </button>
+            <button class="btn-primary" onclick="submitForm()" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#111750;">
+              Obtenir mon devis gratuit 🎉
+            </button>
+          </div>
+        </div>
+
+        <!-- Success state -->
+        <div id="step5Success" class="hidden text-center py-8 success-anim">
+          <div class="text-6xl mb-4">🎉</div>
+          <h3 class="text-2xl font-bold text-navy-950 mb-2">Demande envoyée !</h3>
+          <p class="text-slate-500 mb-4">Un conseiller vous rappelle <strong class="text-navy-800">sous 2 heures</strong> au numéro indiqué.</p>
+          <div class="bg-slate-50 rounded-xl p-4 text-sm text-slate-600 border border-slate-200">
+            Votre devis estimatif : <span id="successPrice" class="font-bold text-navy-800 text-lg"></span>
+          </div>
+          <a href="tel:+33142000000" class="btn-primary mt-6 inline-flex justify-center">
+            📞 Appeler directement
+          </a>
+        </div>
+      </div>
+
+      <!-- ─── PRICE PANEL (always visible) ─── -->
+      <div class="price-panel p-5 mt-6">
+        <p class="text-slate-400 text-xs mb-2 font-medium uppercase tracking-wider">Prix estimé</p>
+        <div class="price-big mb-1"><span id="priceTotal">38</span>€</div>
+        <p class="text-slate-400 text-xs mb-4">TTC · Prix fixe, sans surprise</p>
+        <div class="space-y-0">
+          <div class="price-row"><span>Base</span><span class="text-white font-semibold">38€</span></div>
+          <div class="price-row" id="priceDistRow"><span>Distance (—)</span><span id="priceDist" class="text-white font-semibold">0€</span></div>
+          <div class="price-row" id="priceObjRow"><span>Objets</span><span id="priceObj" class="text-white font-semibold">0€</span></div>
+          <div class="price-row" id="priceEtageRow" style="display:none"><span>Étages</span><span id="priceEtage" class="text-white font-semibold">0€</span></div>
+          <div class="price-row" id="priceMoversRow" style="display:none"><span>Déménageurs sup.</span><span id="priceMovers" class="text-white font-semibold">0€</span></div>
+          <div class="price-row" id="priceUrgentRow" style="display:none"><span>⚡ Urgent (+20%)</span><span id="priceUrgent" class="text-white font-semibold">0€</span></div>
+        </div>
+      </div>
+
+    </div><!-- end wizard-card -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FORMULES / PRICING
+════════════════════════════════════════════════ -->
+<section class="py-20 px-4 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <p class="text-navy-700 font-semibold text-sm uppercase tracking-widest mb-2">Nos formules</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-navy-950">Choisissez votre confort</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 items-center">
+      <!-- Éco -->
+      <div class="pricing-card p-8 bg-white">
+        <p class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-1">Éco</p>
+        <h3 class="text-4xl font-bold text-navy-950 mb-1">À partir de<br><span class="text-navy-700">38€</span></h3>
+        <p class="text-slate-400 text-sm mb-6">Idéal studio ou petit volume</p>
+        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+          <li class="flex items-center gap-2"><span class="text-navy-600">✓</span> 1 déménageur professionnel</li>
+          <li class="flex items-center gap-2"><span class="text-navy-600">✓</span> Camion 12m³</li>
+          <li class="flex items-center gap-2"><span class="text-navy-600">✓</span> Assurance de base</li>
+          <li class="flex items-center gap-2"><span class="text-slate-300">✕</span> Montée en étage</li>
+        </ul>
+        <a href="#estimateur" class="block text-center border-2 border-navy-200 text-navy-800 font-semibold py-3 rounded-xl hover:border-navy-600 transition-colors">Choisir Éco</a>
+      </div>
+      <!-- Standard (featured) -->
+      <div class="pricing-card featured p-8">
+        <div class="inline-flex items-center gap-1 bg-amber-400 text-navy-950 text-xs font-bold px-3 py-1 rounded-full mb-3">⭐ Le plus populaire</div>
+        <p class="text-slate-300 text-sm font-semibold uppercase tracking-wider mb-1">Standard</p>
+        <h3 class="text-4xl font-bold text-white mb-1">À partir de<br><span class="text-amber-400">77€</span></h3>
+        <p class="text-slate-300 text-sm mb-6">Parfait pour un 2 à 3 pièces</p>
+        <ul class="space-y-3 text-sm text-slate-200 mb-8">
+          <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> 2 déménageurs professionnels</li>
+          <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Camion 20m³</li>
+          <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Montée en étage incluse</li>
+          <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Assurance tous risques</li>
+        </ul>
+        <a href="#estimateur" class="block text-center bg-amber-400 text-navy-950 font-bold py-3 rounded-xl hover:bg-amber-300 transition-colors">Choisir Standard</a>
+      </div>
+      <!-- Confort -->
+      <div class="pricing-card p-8 bg-white">
+        <p class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-1">Confort</p>
+        <h3 class="text-4xl font-bold text-navy-950 mb-1">À partir de<br><span class="text-navy-700">149€</span></h3>
+        <p class="text-slate-400 text-sm mb-6">Grand appartement ou maison</p>
+        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+          <li class="flex items-center gap-2"><span class="text-navy-600">✓</span> 3 déménageurs premium</li>
+          <li class="flex items-center gap-2"><span class="text-navy-600">✓</span> Camion 30m³</li>
+          <li class="flex items-center gap-2"><span class="text-navy-600">✓</span> Emballage & déballage</li>
+          <li class="flex items-center gap-2"><span class="text-navy-600">✓</span> Assurance premium AXA</li>
+        </ul>
+        <a href="#estimateur" class="block text-center border-2 border-navy-200 text-navy-800 font-semibold py-3 rounded-xl hover:border-navy-600 transition-colors">Choisir Confort</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     RÉASSURANCE
+════════════════════════════════════════════════ -->
+<section class="bg-navy-950 py-14 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+      <div class="text-center">
+        <div class="text-slate-300 text-xs font-semibold uppercase tracking-widest mb-2">Assuré par</div>
+        <div class="flex items-center gap-4">
+          <div class="bg-white rounded-lg px-4 py-2 font-bold text-navy-900 text-lg">AXA</div>
+          <div class="bg-white rounded-lg px-4 py-2 font-bold text-navy-900 text-lg">Allianz</div>
+        </div>
+      </div>
+      <div class="w-px h-12 bg-slate-700 hidden md:block"></div>
+      <div class="text-center">
+        <div class="flex gap-1 justify-center mb-1">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-white font-bold text-2xl">4.9 / 5</p>
+        <p class="text-slate-400 text-sm">sur Google Avis · 386 avis</p>
+      </div>
+      <div class="w-px h-12 bg-slate-700 hidden md:block"></div>
+      <div class="text-center">
+        <p class="text-white font-bold text-3xl">+1 200</p>
+        <p class="text-slate-400 text-sm">déménagements réalisés</p>
+      </div>
+      <div class="w-px h-12 bg-slate-700 hidden md:block"></div>
+      <div class="text-center">
+        <p class="text-white font-bold text-3xl">2h</p>
+        <p class="text-slate-400 text-sm">délai de rappel garanti</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     TÉMOIGNAGES
+════════════════════════════════════════════════ -->
+<section class="py-20 px-4 bg-slate-50">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <p class="text-navy-700 font-semibold text-sm uppercase tracking-widest mb-2">Témoignages</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-navy-950">Ils nous font confiance</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testi-card p-6">
+        <div class="flex gap-1 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">"Équipe ponctuelle, soigneuse et efficace. Mon piano a été transporté sans la moindre égratignure. Prix exactement comme annoncé, aucune surprise !"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-navy-200 flex items-center justify-center font-bold text-navy-800">SL</div>
+          <div>
+            <p class="font-semibold text-navy-900 text-sm">Sophie L.</p>
+            <p class="text-slate-400 text-xs">Paris → Bordeaux · 2 pièces</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card p-6 border-navy-200 shadow-sm" style="border-color:#c3d0ff;">
+        <div class="flex gap-1 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">"Devis obtenu en 3 minutes via le calculateur. Les 2 déménageurs sont arrivés à 8h pile. Travail rapide et professionnel. Je recommande vivement !"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center font-bold text-amber-700">MR</div>
+          <div>
+            <p class="font-semibold text-navy-900 text-sm">Marc R.</p>
+            <p class="text-slate-400 text-xs">Lyon → Paris · 3 pièces</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card p-6">
+        <div class="flex gap-1 mb-3"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">"Déménagement en urgence un dimanche. Rappelés en moins d'une heure, équipe disponible dans l'après-midi. Service impeccable, prix honnête."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-700">AC</div>
+          <div>
+            <p class="font-semibold text-navy-900 text-sm">Amélie C.</p>
+            <p class="text-slate-400 text-xs">Marseille → Nice · Studio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA FINAL
+════════════════════════════════════════════════ -->
+<section class="py-20 px-4 bg-white text-center">
+  <div class="max-w-2xl mx-auto fade-up">
+    <h2 class="text-4xl md:text-5xl font-bold text-navy-950 mb-4">Prêt à déménager<br><em class="font-light italic text-navy-700">sans stress ?</em></h2>
+    <p class="text-slate-500 mb-8">Obtenez votre devis instantané et un rappel sous 2 heures.</p>
+    <a href="#estimateur" class="btn-cta inline-flex items-center gap-3 text-lg">
+      Calculer mon devis <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="flex justify-center gap-6 mt-8 text-sm text-slate-400">
+      <span>✓ Sans engagement</span>
+      <span>✓ Réponse sous 2h</span>
+      <span>✓ Prix fixe garanti</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="bg-navy-950 py-10 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">🚚</span>
+          <span class="text-white font-bold text-xl">TransitPro</span>
+        </div>
+        <p class="text-slate-400 text-sm max-w-xs">Spécialiste du déménagement en France. Équipe professionnelle, prix transparents.</p>
+      </div>
+      <div>
+        <p class="text-slate-300 font-semibold mb-2">Contact</p>
+        <a href="tel:+33142000000" class="text-amber-400 font-bold text-xl hover:text-amber-300 transition-colors block">📞 01 42 00 00 00</a>
+        <p class="text-slate-400 text-sm mt-1">Disponible 7j/7 · 7h – 20h</p>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-slate-500">
+      <p>© 2026 TransitPro SARL · Siret : 123 456 789 00010 · RCS Paris</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-slate-300 transition-colors">Mentions légales</a>
+        <a href="#" class="hover:text-slate-300 transition-colors">Politique de confidentialité</a>
+        <a href="#" class="hover:text-slate-300 transition-colors">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky WhatsApp -->
+<a href="tel:+33142000000" class="sticky-phone" title="Appeler maintenant">📞</a>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════ -->
+<script>
+// ─── DATA ───────────────────────────────────────
+const ITEMS = [
+  { id:'canape',   label:'Canapé',         emoji:'🛋️',  vol:3.0,  price:4 },
+  { id:'lit',      label:'Lit double',     emoji:'🛏️',  vol:2.0,  price:3 },
+  { id:'armoire',  label:'Armoire',        emoji:'🗄️',  vol:2.5,  price:3 },
+  { id:'table',    label:'Table',          emoji:'🪑',  vol:1.0,  price:2 },
+  { id:'frigo',    label:'Réfrigérateur',  emoji:'🧊',  vol:0.8,  price:2 },
+  { id:'machine',  label:'Machine à laver',emoji:'🫧',  vol:0.6,  price:2 },
+  { id:'bureau',   label:'Bureau',         emoji:'🖥️',  vol:1.2,  price:2 },
+  { id:'carton',   label:'Carton',         emoji:'📦',  vol:0.1,  price:0.5 },
+];
+
+let quantities = {};
+ITEMS.forEach(i => quantities[i.id] = 0);
+let customItems = [];
+
+let state = {
+  currentStep: 1,
+  accessType: 'trottoir',
+  floorDepart: 0,
+  floorArrivee: 0,
+  ascDepart: true,
+  ascArrivee: true,
+  urgent: false,
+  movers: 1,
+};
+
+const BASE = 38;
+const TRUCK_CAP = 12;
+
+// ─── STEP ICONS ────────────────────────────────
+const stepIcons = ['📍','📍','📦','🏢','📅'];
+const stepLabels = ['Départ','Arrivée','Objets','Accès','Date'];
+
+function renderStepNav() {
+  const nav = document.getElementById('stepNav');
+  nav.innerHTML = stepIcons.map((icon, i) => {
+    const n = i + 1;
+    const cls = n === state.currentStep ? 'active' : n < state.currentStep ? 'done' : 'pending';
+    return `<div class="nav-step" onclick="nextStep(${n})">
+      <div class="nav-dot step-icon ${cls}">${n < state.currentStep ? '✓' : icon}</div>
+    </div>${i < stepIcons.length-1 ? '<div style="width:20px;height:2px;background:'+(n < state.currentStep ? '#1e30d4':'#e2e8f0')+'"></div>' : ''}`;
+  }).join('');
+}
+
+// ─── STEP NAVIGATION ───────────────────────────
+function nextStep(n) {
+  document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+  document.getElementById('step'+n).classList.remove('hidden');
+  state.currentStep = n;
+  renderStepNav();
+
+  if (n === 2) renderItemGrid();
+  if (n === 5) renderSummary();
+  updatePrice();
+}
+
+// ─── ITEM GRID ─────────────────────────────────
+function renderItemGrid() {
+  const grid = document.getElementById('itemGrid');
+  const allItems = [...ITEMS, ...customItems];
+  grid.innerHTML = allItems.map(item => `
+    <div class="item-card p-3">
+      <div class="text-2xl mb-1 text-center">${item.emoji || '📦'}</div>
+      <div class="text-center font-semibold text-navy-900 text-xs mb-2">${item.label}</div>
+      <div class="text-center text-xs text-slate-400 mb-3">${item.vol}m³</div>
+      <div class="flex items-center justify-center gap-2">
+        <button class="qty-btn minus" onclick="changeQty('${item.id}',-1)">−</button>
+        <span id="qty_${item.id}" class="font-bold text-navy-950 text-base w-5 text-center">${quantities[item.id]||0}</span>
+        <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function changeQty(id, delta) {
+  quantities[id] = Math.max(0, (quantities[id]||0) + delta);
+  const el = document.getElementById('qty_'+id);
+  if (el) el.textContent = quantities[id];
+  updatePrice();
+  updateTruck();
+}
+
+function addCustomItem() {
+  const nameEl = document.getElementById('customItemName');
+  const name = nameEl.value.trim();
+  if (!name) return;
+  const id = 'custom_'+Date.now();
+  customItems.push({ id, label: name, emoji:'📦', vol:0.5, price:1 });
+  quantities[id] = 1;
+  nameEl.value = '';
+  renderItemGrid();
+  updatePrice();
+  updateTruck();
+}
+
+function updateTruck() {
+  const vol = calcVolume();
+  const pct = Math.min(Math.round((vol / TRUCK_CAP) * 100), 100);
+  document.getElementById('truckPct').textContent = pct+'%';
+  document.getElementById('truckFill').style.width = pct+'%';
+}
+
+function calcVolume() {
+  const allItems = [...ITEMS, ...customItems];
+  return allItems.reduce((s, item) => s + (quantities[item.id]||0) * item.vol, 0);
+}
+
+function calcObjPrice() {
+  const allItems = [...ITEMS, ...customItems];
+  return allItems.reduce((s, item) => s + (quantities[item.id]||0) * item.price, 0);
+}
+
+// ─── FLOORS ────────────────────────────────────
+function changeFloor(side, delta) {
+  if (side === 'depart') {
+    state.floorDepart = Math.max(0, state.floorDepart + delta);
+    document.getElementById('floorDepart').textContent = state.floorDepart;
+  } else {
+    state.floorArrivee = Math.max(0, state.floorArrivee + delta);
+    document.getElementById('floorArrivee').textContent = state.floorArrivee;
+  }
+  updatePrice();
+}
+
+function setAsc(side, val) {
+  if (side === 'depart') {
+    state.ascDepart = val;
+    document.getElementById('ascDepartOui').classList.toggle('active', val);
+    document.getElementById('ascDepartNon').classList.toggle('active', !val);
+  } else {
+    state.ascArrivee = val;
+    document.getElementById('ascArriveeOui').classList.toggle('active', val);
+    document.getElementById('ascArriveeNon').classList.toggle('active', !val);
+  }
+  updatePrice();
+}
+
+// ─── ACCESS ────────────────────────────────────
+function selectAccess(type) {
+  state.accessType = type;
+  document.getElementById('acc-trottoir').classList.toggle('selected', type==='trottoir');
+  document.getElementById('acc-etage').classList.toggle('selected', type==='etage');
+  const fs = document.getElementById('floorSection');
+  if (type === 'etage') { fs.classList.remove('hidden'); } else { fs.classList.add('hidden'); }
+  updatePrice();
+}
+
+// ─── URGENT ────────────────────────────────────
+function toggleUrgent() {
+  state.urgent = !state.urgent;
+  document.getElementById('urgentCheck').checked = state.urgent;
+  document.getElementById('urgentCard').classList.toggle('selected', state.urgent);
+  updatePrice();
+}
+
+// ─── MOVERS ────────────────────────────────────
+function selectMovers(n) {
+  state.movers = n;
+  [1,2,3].forEach(i => document.getElementById('m'+i).classList.toggle('selected', i===n));
+  updatePrice();
+}
+
+// ─── PRICE ENGINE ──────────────────────────────
+function updatePrice() {
+  const dist = parseInt(document.getElementById('distanceKm')?.value) || 0;
+  const distCost = dist;
+  const objCost = Math.round(calcObjPrice());
+
+  // Étages sans ascenseur: 8€ par étage
+  let etageCost = 0;
+  if (state.accessType === 'etage') {
+    if (!state.ascDepart && state.floorDepart > 0) etageCost += state.floorDepart * 8;
+    if (!state.ascArrivee && state.floorArrivee > 0) etageCost += state.floorArrivee * 8;
+  }
+
+  // Déménageurs: +20€ par déménageur supplémentaire
+  const moversCost = (state.movers - 1) * 20;
+
+  let subtotal = BASE + distCost + objCost + etageCost + moversCost;
+  const urgentCost = state.urgent ? Math.round(subtotal * 0.2) : 0;
+  const total = subtotal + urgentCost;
+
+  document.getElementById('priceTotal').textContent = total;
+
+  // Distance row
+  const distLabel = dist ? `Distance (${dist} km)` : 'Distance (—)';
+  document.getElementById('priceDistRow').querySelector('span:first-child').textContent = distLabel;
+  document.getElementById('priceDist').textContent = distCost + '€';
+
+  document.getElementById('priceObj').textContent = objCost + '€';
+
+  if (etageCost > 0) {
+    document.getElementById('priceEtageRow').style.display = '';
+    document.getElementById('priceEtage').textContent = etageCost + '€';
+  } else {
+    document.getElementById('priceEtageRow').style.display = 'none';
+  }
+
+  if (moversCost > 0) {
+    document.getElementById('priceMoversRow').style.display = '';
+    document.getElementById('priceMovers').textContent = moversCost + '€';
+  } else {
+    document.getElementById('priceMoversRow').style.display = 'none';
+  }
+
+  if (state.urgent) {
+    document.getElementById('priceUrgentRow').style.display = '';
+    document.getElementById('priceUrgent').textContent = urgentCost + '€';
+  } else {
+    document.getElementById('priceUrgentRow').style.display = 'none';
+  }
+}
+
+// ─── SUMMARY (step 5) ─────────────────────────
+function renderSummary() {
+  const from = document.getElementById('villeDepart')?.value || '—';
+  const to = document.getElementById('villeArrivee')?.value || '—';
+  const vol = calcVolume().toFixed(1);
+  const el1 = document.getElementById('summaryFrom');
+  const el2 = document.getElementById('summaryTo');
+  const el3 = document.getElementById('summaryVol');
+  if (el1) el1.textContent = '📍 ' + (from || '—');
+  if (el2) el2.textContent = '📍 ' + (to || '—');
+  if (el3) el3.textContent = '📦 ' + vol + ' m³';
+}
+
+// ─── SUBMIT ────────────────────────────────────
+function submitForm() {
+  const nom = document.getElementById('nomClient').value.trim();
+  const tel = document.getElementById('telClient').value.trim();
+  if (!nom || !tel) {
+    alert('Merci de renseigner votre nom et téléphone.');
+    return;
+  }
+
+  const total = document.getElementById('priceTotal').textContent;
+  document.getElementById('successPrice').textContent = total + '€ TTC';
+
+  document.getElementById('step5Form').classList.add('hidden');
+  document.getElementById('step5Success').classList.remove('hidden');
+  document.getElementById('step5Success').classList.add('success-anim');
+}
+
+// ─── DISTANCE auto-update ─────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderStepNav();
+  renderItemGrid();
+
+  const distInput = document.getElementById('distanceKm');
+  if (distInput) distInput.addEventListener('input', updatePrice);
+
+  // Set default date
+  const dateInput = document.getElementById('dateDemena');
+  if (dateInput) {
+    const d = new Date();
+    d.setDate(d.getDate() + 7);
+    dateInput.value = d.toISOString().split('T')[0];
+  }
+
+  updatePrice();
+  updateTruck();
+
+  // Fade-up observer
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>
