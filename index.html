@@ -196,8 +196,10 @@ input,select,button{font-family:'Montserrat',sans-serif}
 .confiance-inner{max-width:1100px;margin:0 auto}
 .section-label{font-size:12px;font-weight:700;color:#1e30d4;text-transform:uppercase;letter-spacing:.1em;text-align:center;margin-bottom:8px}
 .section-title{font-size:clamp(32px,5vw,50px);font-weight:700;color:#111750;text-align:center;margin-bottom:48px;line-height:1.2}
-.confiance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
-.confiance-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:20px;padding:32px 24px;text-align:center;transition:.25s}
+.confiance-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+@media(max-width:1024px){.confiance-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.confiance-grid{grid-template-columns:repeat(2,1fr)}}
+.confiance-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:20px;padding:24px 16px;text-align:center;transition:.25s}
 .confiance-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(17,23,80,.1);border-color:#c3d0ff}
 .confiance-icon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
 .confiance-name{font-size:17px;font-weight:700;color:#111750;margin-bottom:8px}
@@ -764,6 +766,9 @@ function updateTruck() {
 // ADDRESS AUTOCOMPLETE (api-adresse.data.gouv.fr)
 // ═══════════════════════════════════════════════
 let addrTimers = {};
+const COORDS = {};
+// Store suggestion data by box id → array of {label, lat, lon}
+const SUGG_DATA = {};
 
 async function onAddr(input, suggestId) {
   const q = input.value.trim();
@@ -772,56 +777,77 @@ async function onAddr(input, suggestId) {
   clearTimeout(addrTimers[suggestId]);
   addrTimers[suggestId] = setTimeout(async () => {
     try {
-      const r = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&limit=5`);
+      const r = await fetch('https://api-adresse.data.gouv.fr/search/?q=' + encodeURIComponent(q) + '&limit=5');
       const d = await r.json();
       const features = d.features || [];
       if (!features.length) { box.classList.remove('open'); return; }
-      box.innerHTML = features.map(f => {
-        const props = f.properties;
-        return `<div class="addr-sugg-item" onclick="selectAddr('${suggestId}','${input.id}',${JSON.stringify(props.label).replace(/'/g,"&#39;")},${f.geometry.coordinates[1]},${f.geometry.coordinates[0]})">
-          <span class="sugg-icon">📍</span>
-          <div><div class="sugg-main">${props.label}</div><div class="sugg-sub">${props.context||''}</div></div>
-        </div>`;
-      }).join('');
+
+      // Store data for click handler
+      SUGG_DATA[suggestId] = features.map(f => ({
+        label: f.properties.label,
+        context: f.properties.context || '',
+        lat: f.geometry.coordinates[1],
+        lon: f.geometry.coordinates[0]
+      }));
+
+      // Render items
+      box.innerHTML = SUGG_DATA[suggestId].map((item, idx) =>
+        '<div class="addr-sugg-item" data-idx="' + idx + '" data-box="' + suggestId + '" data-input="' + input.id + '">' +
+          '<span class="sugg-icon">📍</span>' +
+          '<div><div class="sugg-main">' + item.label + '</div>' +
+          '<div class="sugg-sub">' + item.context + '</div></div>' +
+        '</div>'
+      ).join('');
+
+      // Attach click listeners directly (no inline onclick)
+      box.querySelectorAll('.addr-sugg-item').forEach(el => {
+        el.addEventListener('mousedown', function(e) {
+          e.preventDefault(); // prevent input blur before click fires
+          const idx = parseInt(this.dataset.idx);
+          const boxId = this.dataset.box;
+          const inputId = this.dataset.input;
+          const chosen = SUGG_DATA[boxId][idx];
+          pickAddr(inputId, boxId, chosen.label, chosen.lat, chosen.lon);
+        });
+      });
+
       box.classList.add('open');
     } catch(e) { box.classList.remove('open'); }
-  }, 250);
+  }, 280);
 }
 
-// Coords store
-const COORDS = {};
-
-function selectAddr(suggestId, inputId, label, lat, lon) {
+function pickAddr(inputId, suggestId, label, lat, lon) {
   document.getElementById(inputId).value = label;
   document.getElementById(suggestId).classList.remove('open');
-  COORDS[inputId] = {lat, lon};
+  COORDS[inputId] = { lat: lat, lon: lon };
   if (inputId === 'inputDepart') S.addrDepart = label;
-  if (inputId === 'inputArrivee') {
-    S.addrArrivee = label;
-    calcDist();
-  }
+  if (inputId === 'inputArrivee') S.addrArrivee = label;
+  // Always try to calc distance whenever either address is picked
+  calcDist();
   calcPrice();
 }
 
 function calcDist() {
   if (!COORDS.inputDepart || !COORDS.inputArrivee) return;
   const R = 6371;
-  const dLat = (COORDS.inputArrivee.lat - COORDS.inputDepart.lat) * Math.PI/180;
-  const dLon = (COORDS.inputArrivee.lon - COORDS.inputDepart.lon) * Math.PI/180;
-  const a = Math.sin(dLat/2)**2 + Math.cos(COORDS.inputDepart.lat*Math.PI/180)*Math.cos(COORDS.inputArrivee.lat*Math.PI/180)*Math.sin(dLon/2)**2;
-  const km = Math.round(R * 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a)));
+  const lat1 = COORDS.inputDepart.lat * Math.PI / 180;
+  const lat2 = COORDS.inputArrivee.lat * Math.PI / 180;
+  const dLat = lat2 - lat1;
+  const dLon = (COORDS.inputArrivee.lon - COORDS.inputDepart.lon) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon/2)**2;
+  const km = Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
   S.distKm = km;
   const badge = document.getElementById('distBadge');
+  if (badge) badge.style.display = 'flex';
   const txt = document.getElementById('distText');
-  if (badge) { badge.style.display='flex'; }
-  if (txt) txt.textContent = `Distance estimée : ${km} km`;
-  document.getElementById('rowDist').querySelector('span:first-child').textContent = `Distance (${km} km)`;
-  calcPrice();
+  if (txt) txt.textContent = 'Distance estimée : ' + km + ' km';
+  const rowLabel = document.getElementById('rowDist');
+  if (rowLabel) rowLabel.querySelector('span:first-child').textContent = 'Distance (' + km + ' km)';
 }
 
-// Close suggestions on outside click
-document.addEventListener('click', e => {
-  document.querySelectorAll('.addr-suggestions').forEach(b => {
+// Close suggestions on outside click (blur on input)
+document.addEventListener('click', function(e) {
+  document.querySelectorAll('.addr-suggestions').forEach(function(b) {
     if (!b.contains(e.target)) b.classList.remove('open');
   });
 });
