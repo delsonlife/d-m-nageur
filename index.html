@@ -53,43 +53,37 @@ input,select,button{font-family:'Montserrat',sans-serif}
 .hero-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:48px}
 .hero-trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.85);font-size:13px;font-weight:500}
 
-/* ── ESTIMATEUR ── */
+/* ── SECTION ESTIMATEUR ── */
 .section-estim{background:#f1f4fb;padding:70px 24px}
 .estim-header{text-align:center;margin-bottom:48px}
 .estim-label{font-size:12px;font-weight:700;color:#1e30d4;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
 .estim-header h2{font-size:clamp(34px,5vw,52px);font-weight:700;color:#111750;line-height:1.15}
 .estim-header p{color:#64748b;margin-top:10px;font-size:16px}
 
-/* wizard card */
+/* ── WIZARD ── */
 .wizard{max-width:1100px;margin:0 auto;background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(17,23,80,.13);overflow:hidden}
-
-/* step tabs */
-.step-tabs{display:flex;border-bottom:2px solid #f1f5f9;padding:0 32px;overflow-x:auto;background:#fff}
-.step-tab{display:flex;align-items:center;gap:8px;padding:18px 20px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-size:14px;font-weight:600;color:#94a3b8;transition:.2s}
+.step-tabs{display:flex;border-bottom:2px solid #f1f5f9;padding:0 32px;overflow-x:auto;background:#fff;scrollbar-width:none}
+.step-tabs::-webkit-scrollbar{display:none}
+.step-tab{display:flex;align-items:center;gap:8px;padding:18px 20px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;font-size:14px;font-weight:600;color:#94a3b8;transition:.2s;flex-shrink:0}
 .step-tab.active{color:#1e30d4;border-bottom-color:#1e30d4}
-.step-tab.done{color:#22c55e;border-bottom-color:transparent}
+.step-tab.done{color:#22c55e}
 .step-tab-dot{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;transition:.2s;flex-shrink:0}
 .step-tab.active .step-tab-dot{background:#1e30d4;color:#fff}
 .step-tab.done .step-tab-dot{background:#22c55e;color:#fff}
-
-/* wizard body */
-.wizard-body{display:grid;grid-template-columns:1fr 340px;min-height:420px}
+.wizard-body{display:grid;grid-template-columns:1fr 320px;min-height:420px}
 @media(max-width:768px){.wizard-body{grid-template-columns:1fr}}
-
-/* step panels */
-.step-panel{padding:40px 40px;display:none}
+.step-panel{padding:36px 36px;display:none}
 .step-panel.active{display:block}
 @media(max-width:600px){.step-panel{padding:24px 20px}}
-
 .step-title{font-size:28px;font-weight:700;color:#111750;margin-bottom:6px}
 .step-desc{font-size:14px;color:#94a3b8;margin-bottom:28px}
 
-/* address input */
+/* ── ADDRESS INPUT ── */
 .addr-wrap{position:relative;margin-bottom:24px}
 .addr-input{width:100%;border:2px solid #e2e8f0;border-radius:14px;padding:18px 20px 18px 52px;font-size:16px;color:#1e293b;outline:none;transition:.2s;background:#f8fafc}
 .addr-input:focus{border-color:#1e30d4;background:#fff;box-shadow:0 0 0 4px rgba(30,48,212,.07)}
 .addr-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:20px;pointer-events:none}
-.addr-suggestions{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 40px rgba(17,23,80,.12);z-index:50;overflow:hidden;display:none}
+.addr-suggestions{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 40px rgba(17,23,80,.12);z-index:200;overflow:hidden;display:none}
 .addr-suggestions.open{display:block}
 .addr-sugg-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;cursor:pointer;transition:.15s;border-bottom:1px solid #f1f5f9}
 .addr-sugg-item:last-child{border-bottom:none}
@@ -98,180 +92,186 @@ input,select,button{font-family:'Montserrat',sans-serif}
 .sugg-main{font-size:14px;font-weight:600;color:#1e293b}
 .sugg-sub{font-size:12px;color:#94a3b8;margin-top:1px}
 
-/* Item grid */
-.item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-bottom:20px}
-.item-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:14px 10px;text-align:center;transition:.2s}
-.item-card:hover{border-color:#9db3ff;box-shadow:0 4px 16px rgba(30,48,212,.08)}
+/* distance badge */
+.dist-badge{display:none;align-items:center;gap:8px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;color:#15803d;margin-bottom:20px}
+.dist-badge.loading{background:#f0f4ff;border-color:#c3d0ff;color:#1e30d4}
+.dist-badge.error{background:#fff1f2;border-color:#fecdd3;color:#be123c}
+
+/* ── ITEM GRID ── */
+.item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:16px}
+.item-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:12px 8px;text-align:center;transition:.2s}
+.item-card:hover{border-color:#9db3ff}
 .item-card.has-qty{border-color:#1e30d4;background:#f0f4ff}
-.item-emoji{font-size:28px;margin-bottom:6px}
-.item-name{font-size:12px;font-weight:600;color:#334155;margin-bottom:2px}
-.item-vol{font-size:11px;color:#94a3b8;margin-bottom:10px}
-.item-qty{display:flex;align-items:center;justify-content:center;gap:8px}
-.qty-btn{width:28px;height:28px;border-radius:50%;border:none;cursor:pointer;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:.15s;flex-shrink:0}
+.item-emoji{font-size:26px;margin-bottom:4px}
+.item-name{font-size:11px;font-weight:600;color:#334155;margin-bottom:2px}
+.item-vol{font-size:10px;color:#94a3b8;margin-bottom:8px}
+.item-qty{display:flex;align-items:center;justify-content:center;gap:6px}
+.qty-btn{width:26px;height:26px;border-radius:50%;border:none;cursor:pointer;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:.15s;flex-shrink:0}
 .qty-btn.plus{background:#1e30d4;color:#fff}
 .qty-btn.plus:hover{background:#1a28ab}
 .qty-btn.minus{background:#e2e8f0;color:#475569}
 .qty-btn.minus:hover{background:#cbd5e1}
-.qty-val{font-weight:700;font-size:16px;color:#111750;min-width:20px;text-align:center}
+.qty-val{font-weight:700;font-size:15px;color:#111750;min-width:18px;text-align:center}
 
 /* truck bar */
-.truck-bar-wrap{background:#f1f5f9;border-radius:12px;padding:14px 18px;margin-bottom:16px}
+.truck-bar-wrap{background:#f1f5f9;border-radius:12px;padding:12px 16px;margin-bottom:16px}
 .truck-bar-label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#475569;margin-bottom:8px}
 .truck-bar-bg{background:#e2e8f0;border-radius:99px;height:10px}
 .truck-bar-fill{height:10px;border-radius:99px;background:linear-gradient(90deg,#1e30d4,#4a63f5);transition:width .4s cubic-bezier(.4,0,.2,1)}
-.truck-note{font-size:11px;color:#f59e0b;margin-top:6px;display:flex;align-items:center;gap:4px}
+.truck-note{font-size:11px;color:#f59e0b;margin-top:6px}
 
-/* access cards */
-.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+/* ── ACCESS CARDS ── */
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .access-card{border:2px solid #e2e8f0;border-radius:14px;padding:16px;cursor:pointer;transition:.2s}
 .access-card.sel{border-color:#1e30d4;background:#f0f4ff}
 .access-card:hover:not(.sel){border-color:#9db3ff}
-.access-emoji{font-size:28px;margin-bottom:6px}
+.access-emoji{font-size:26px;margin-bottom:6px}
 .access-name{font-weight:700;font-size:14px;color:#1e293b;margin-bottom:2px}
 .access-desc{font-size:12px;color:#94a3b8}
 
 /* floors */
-.floor-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.floor-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .floor-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px}
-.floor-card-title{font-size:12px;font-weight:700;color:#64748b;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
-.floor-counter{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.floor-card-title{font-size:11px;font-weight:700;color:#64748b;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+.floor-counter{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .floor-val{font-size:22px;font-weight:800;color:#111750;min-width:28px;text-align:center}
 .asc-row{display:flex;gap:8px}
 .toggle-pill{border:1.5px solid #e2e8f0;border-radius:99px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:#64748b;transition:.15s}
 .toggle-pill.on{background:#1e30d4;border-color:#1e30d4;color:#fff}
 
 /* urgent */
-.urgent-box{border:1.5px solid #fcd34d;background:#fffbeb;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;margin-bottom:20px;transition:.2s}
+.urgent-box{border:1.5px solid #fcd34d;background:#fffbeb;border-radius:12px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;margin-bottom:16px;transition:.2s}
 .urgent-box.sel{background:#fef3c7;border-color:#f59e0b}
 .urgent-text{font-size:14px;font-weight:700;color:#92400e}
 .urgent-sub{font-size:12px;color:#b45309}
 
 /* movers */
-.movers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
-.mover-card{border:2px solid #e2e8f0;border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;transition:.2s}
+.movers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.mover-card{border:2px solid #e2e8f0;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s}
 .mover-card.sel{border-color:#1e30d4;background:#f0f4ff}
 .mover-card:hover:not(.sel){border-color:#9db3ff}
-.mover-emoji{font-size:26px;margin-bottom:6px}
+.mover-emoji{font-size:24px;margin-bottom:4px}
 .mover-label{font-size:12px;font-weight:700;color:#1e293b}
 .mover-sub{font-size:11px;color:#94a3b8;margin-top:2px}
 
-/* date step */
-.form-row{margin-bottom:16px}
-.form-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
-.form-input{width:100%;border:2px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:15px;color:#1e293b;outline:none;transition:.2s;background:#f8fafc}
+/* form */
+.form-row{margin-bottom:14px}
+.form-label{font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px}
+.form-input{width:100%;border:2px solid #e2e8f0;border-radius:12px;padding:13px 15px;font-size:14px;color:#1e293b;outline:none;transition:.2s;background:#f8fafc}
 .form-input:focus{border-color:#1e30d4;background:#fff;box-shadow:0 0 0 4px rgba(30,48,212,.07)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.form-grid-2{grid-template-columns:1fr}}
 
-/* recap badge */
-.recap{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px;margin-bottom:20px}
-.recap-title{font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+/* recap */
+.recap{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.recap-title{font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
 .recap-pills{display:flex;flex-wrap:wrap;gap:6px}
-.recap-pill{background:#dde6ff;color:#1e30d4;font-size:12px;font-weight:600;border-radius:99px;padding:4px 12px}
+.recap-pill{background:#dde6ff;color:#1e30d4;font-size:11px;font-weight:600;border-radius:99px;padding:3px 10px}
 
-/* step nav btns */
-.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-.btn-back{background:none;border:none;font-size:14px;font-weight:600;color:#94a3b8;cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 0;transition:.15s}
+/* nav btns */
+.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.btn-back{background:none;border:none;font-size:13px;font-weight:600;color:#94a3b8;cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 0;transition:.15s}
 .btn-back:hover{color:#1e30d4}
-.btn-next{background:linear-gradient(135deg,#1e30d4,#2e44ea);color:#fff;border:none;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.2s}
+.btn-next{background:linear-gradient(135deg,#1e30d4,#2e44ea);color:#fff;border:none;border-radius:10px;padding:13px 24px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.2s}
 .btn-next:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(30,48,212,.3)}
-.btn-submit{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#111750;border:none;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.2s}
+.btn-submit{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#111750;border:none;border-radius:10px;padding:13px 24px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.2s}
 .btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,158,11,.35)}
 
-/* price panel */
-.price-panel{background:#111750;padding:32px 28px;display:flex;flex-direction:column}
-@media(max-width:768px){.price-panel{border-top:2px solid #e2e8f0;padding:24px 20px}}
-.price-label{font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.price-amount{font-size:56px;font-weight:800;color:#fff;line-height:1;margin-bottom:4px}
-.price-sub{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:24px}
+/* ── PRICE PANEL ── */
+.price-panel{background:#111750;padding:28px 24px;display:flex;flex-direction:column}
+@media(max-width:768px){.price-panel{border-top:2px solid #e2e8f0;padding:20px}}
+.price-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.price-amount{font-size:52px;font-weight:800;color:#fff;line-height:1;margin-bottom:4px}
+.price-sub{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:20px}
 .price-rows{flex:1}
-.price-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px;color:rgba(255,255,255,.6)}
+.price-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px;color:rgba(255,255,255,.55)}
 .price-row:last-child{border:none}
 .price-row span:last-child{color:#fff;font-weight:700}
-.price-cta{margin-top:20px}
-.price-reassure{display:flex;flex-direction:column;gap:8px;margin-top:16px}
-.price-reassure-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.55)}
+.price-cta{margin-top:16px}
+.price-btn{width:100%;display:flex;justify-content:center;align-items:center;gap:8px;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#111750;font-weight:800;font-size:14px;padding:13px;border-radius:10px;border:none;cursor:pointer;transition:.2s}
+.price-btn:hover{box-shadow:0 6px 20px rgba(245,158,11,.4)}
+.price-reassure{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.price-reassure-item{display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.45)}
 
-/* success */
-.success-state{display:none;text-align:center;padding:48px 32px}
+/* ── SUCCESS ── */
+.success-state{display:none;text-align:center;padding:40px 28px}
 .success-state.show{display:block}
-.success-icon{font-size:64px;margin-bottom:16px;animation:popIn .5s cubic-bezier(.36,.07,.19,.97)}
+.success-icon{font-size:60px;margin-bottom:14px;animation:popIn .5s cubic-bezier(.36,.07,.19,.97)}
 @keyframes popIn{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
-.success-title{font-size:30px;font-weight:700;color:#111750;margin-bottom:8px}
-.success-sub{color:#64748b;font-size:16px;margin-bottom:24px;line-height:1.6}
-.success-price{background:#f0f4ff;border:2px solid #c3d0ff;border-radius:14px;padding:16px 24px;display:inline-block;font-size:24px;font-weight:800;color:#111750;margin-bottom:28px}
-.btn-call{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1e30d4,#2e44ea);color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:12px;border:none;cursor:pointer}
+.success-title{font-size:28px;font-weight:700;color:#111750;margin-bottom:8px}
+.success-sub{color:#64748b;font-size:15px;margin-bottom:20px;line-height:1.6}
+.success-price-box{background:#f0f4ff;border:2px solid #c3d0ff;border-radius:14px;padding:14px 20px;display:inline-block;font-size:22px;font-weight:800;color:#111750;margin-bottom:24px}
+.btn-call{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1e30d4,#2e44ea);color:#fff;font-weight:700;font-size:14px;padding:13px 24px;border-radius:12px;border:none;cursor:pointer}
 
 /* ── CONFIANCE ── */
 .section-confiance{padding:80px 24px;background:#fff}
-.confiance-inner{max-width:1100px;margin:0 auto}
+.confiance-inner{max-width:1200px;margin:0 auto}
 .section-label{font-size:12px;font-weight:700;color:#1e30d4;text-transform:uppercase;letter-spacing:.1em;text-align:center;margin-bottom:8px}
-.section-title{font-size:clamp(32px,5vw,50px);font-weight:700;color:#111750;text-align:center;margin-bottom:48px;line-height:1.2}
+.section-title{font-size:clamp(32px,5vw,50px);font-weight:700;color:#111750;text-align:center;margin-bottom:40px;line-height:1.2}
 .confiance-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 @media(max-width:1024px){.confiance-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.confiance-grid{grid-template-columns:repeat(2,1fr)}}
 .confiance-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:20px;padding:24px 16px;text-align:center;transition:.25s}
 .confiance-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(17,23,80,.1);border-color:#c3d0ff}
-.confiance-icon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
-.confiance-name{font-size:17px;font-weight:700;color:#111750;margin-bottom:8px}
-.confiance-desc{font-size:14px;color:#64748b;line-height:1.6}
+.confiance-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px}
+.confiance-name{font-size:15px;font-weight:700;color:#111750;margin-bottom:6px}
+.confiance-desc{font-size:12px;color:#64748b;line-height:1.55}
 
 /* ── STATS ── */
-.section-stats{background:#111750;padding:60px 24px}
-.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:center}
-.stat-num{font-size:48px;font-weight:800;color:#fff;line-height:1;font-family:'Montserrat',sans-serif}
-.stat-label{font-size:13px;color:rgba(255,255,255,.5);margin-top:6px;font-weight:500}
+.section-stats{background:#111750;padding:56px 24px}
+.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+@media(max-width:640px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-num{font-size:44px;font-weight:800;color:#fff;line-height:1}
+.stat-label{font-size:12px;color:rgba(255,255,255,.45);margin-top:6px;font-weight:500}
 .stat-accent{color:#fbbf24}
 
 /* ── TÉMOIGNAGES ── */
 .section-testi{padding:80px 24px;background:#f8fafc}
-.testi-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.testi-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:18px;padding:28px 24px;transition:.2s}
+.testi-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
+.testi-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:18px;padding:24px;transition:.2s}
 .testi-card:hover{box-shadow:0 12px 40px rgba(17,23,80,.08);transform:translateY(-2px)}
-.testi-stars{display:flex;gap:3px;margin-bottom:14px}
-.star{color:#fbbf24;font-size:18px}
-.testi-text{font-size:14px;color:#475569;line-height:1.7;margin-bottom:20px}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
-.testi-name{font-weight:700;font-size:14px;color:#1e293b}
-.testi-route{font-size:12px;color:#94a3b8;margin-top:1px}
+.testi-stars{display:flex;gap:2px;margin-bottom:12px}
+.star{color:#fbbf24;font-size:16px}
+.testi-text{font-size:13px;color:#475569;line-height:1.7;margin-bottom:18px}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.testi-name{font-weight:700;font-size:13px;color:#1e293b}
+.testi-route{font-size:11px;color:#94a3b8;margin-top:1px}
 
 /* ── CTA FINAL ── */
 .section-cta{padding:80px 24px;background:#fff;text-align:center}
-.cta-inner{max-width:600px;margin:0 auto}
-.cta-inner h2{font-size:clamp(34px,5vw,52px);font-weight:700;color:#111750;margin-bottom:14px;line-height:1.2}
-.cta-inner p{color:#64748b;font-size:16px;margin-bottom:32px}
-.cta-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:24px}
+.cta-inner{max-width:560px;margin:0 auto}
+.cta-inner h2{font-size:clamp(32px,5vw,50px);font-weight:700;color:#111750;margin-bottom:14px;line-height:1.2}
+.cta-inner p{color:#64748b;font-size:16px;margin-bottom:28px}
+.cta-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:20px}
 .cta-badge{font-size:13px;color:#64748b;display:flex;align-items:center;gap:6px;font-weight:500}
 
 /* ── FOOTER ── */
-.footer{background:#0a0f3c;padding:48px 24px 28px}
+.footer{background:#0a0f3c;padding:44px 24px 24px}
 .footer-inner{max-width:1100px;margin:0 auto}
-.footer-top{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;margin-bottom:32px}
-.footer-brand p{color:#64748b;font-size:13px;max-width:260px;line-height:1.6;margin-top:10px}
-.footer-contact-title{color:rgba(255,255,255,.6);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-.footer-phone{color:#fbbf24;font-weight:800;font-size:22px}
-.footer-phone-note{color:#475569;font-size:12px;margin-top:4px}
-.footer-bottom{border-top:1px solid #1e293b;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.footer-top{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;margin-bottom:28px}
+.footer-brand p{color:#475569;font-size:13px;max-width:240px;line-height:1.6;margin-top:8px}
+.footer-col-title{color:rgba(255,255,255,.45);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.footer-phone{color:#fbbf24;font-weight:800;font-size:20px}
+.footer-phone-note{color:#334155;font-size:12px;margin-top:4px}
+.footer-bottom{border-top:1px solid #1e293b;padding-top:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
 .footer-copy{color:#334155;font-size:12px}
-.footer-links{display:flex;gap:20px}
+.footer-links{display:flex;gap:16px}
 .footer-links a{color:#334155;font-size:12px;transition:.15s}
 .footer-links a:hover{color:#94a3b8}
 
-/* ── STICKY BTN ── */
-.sticky-cta{position:fixed;bottom:20px;right:20px;z-index:200;background:#25d366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 24px rgba(37,211,102,.4);transition:.2s}
+/* ── STICKY ── */
+.sticky-cta{position:fixed;bottom:20px;right:20px;z-index:200;background:#25d366;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 8px 24px rgba(37,211,102,.4);transition:.2s}
 .sticky-cta:hover{transform:scale(1.1)}
 
 /* ── FADE-UP ── */
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
 .fade-up.vis{opacity:1;transform:none}
 
-/* ── RESPONSIVE ── */
 @media(max-width:600px){
   .access-grid{grid-template-columns:1fr}
   .floor-grid{grid-template-columns:1fr}
-  .movers-grid{grid-template-columns:repeat(3,1fr)}
-  .form-grid{grid-template-columns:1fr}
-  .hero h1{font-size:38px}
   .step-tabs{padding:0 12px}
   .step-tab{padding:14px 10px;font-size:12px}
 }
@@ -279,8 +279,8 @@ input,select,button{font-family:'Montserrat',sans-serif}
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="mainNav">
   <div class="nav-inner">
     <div class="logo">
       <div class="logo-icon">🚚</div>
@@ -296,7 +296,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -318,29 +318,29 @@ input,select,button{font-family:'Montserrat',sans-serif}
   </div>
 </section>
 
-<!-- ESTIMATEUR -->
+<!-- ═══ ESTIMATEUR ═══ -->
 <section id="estimateur" class="section-estim">
   <div class="estim-header fade-up">
     <p class="estim-label">Outil d'estimation</p>
     <h2>Votre prix en quelques étapes</h2>
-    <p>Prix fixe calculé en temps réel. Aucun frais caché.</p>
+    <p>Distance routière réelle · Prix fixe calculé en temps réel · Aucun frais caché</p>
   </div>
 
   <div class="wizard">
     <!-- TABS -->
     <div class="step-tabs" id="stepTabs">
-      <div class="step-tab active" id="tab1"><div class="step-tab-dot">📍</div> Départ</div>
-      <div class="step-tab" id="tab2"><div class="step-tab-dot">📍</div> Arrivée</div>
-      <div class="step-tab" id="tab3"><div class="step-tab-dot">📦</div> Objets</div>
-      <div class="step-tab" id="tab4"><div class="step-tab-dot">🏢</div> Étages</div>
-      <div class="step-tab" id="tab5"><div class="step-tab-dot">📅</div> Date</div>
+      <div class="step-tab active" id="tab1"><div class="step-tab-dot" id="dot1">📍</div>&nbsp;Départ</div>
+      <div class="step-tab" id="tab2"><div class="step-tab-dot" id="dot2">📍</div>&nbsp;Arrivée</div>
+      <div class="step-tab" id="tab3"><div class="step-tab-dot" id="dot3">📦</div>&nbsp;Objets</div>
+      <div class="step-tab" id="tab4"><div class="step-tab-dot" id="dot4">🏢</div>&nbsp;Étages</div>
+      <div class="step-tab" id="tab5"><div class="step-tab-dot" id="dot5">📅</div>&nbsp;Date</div>
     </div>
 
     <div class="wizard-body">
-      <!-- LEFT: STEPS -->
+      <!-- LEFT STEPS -->
       <div id="stepsArea">
 
-        <!-- STEP 1: DÉPART -->
+        <!-- STEP 1 -->
         <div class="step-panel active" id="panel1">
           <div class="step-title">Adresse de départ</div>
           <div class="step-desc">Où se trouvent vos affaires actuellement ?</div>
@@ -351,11 +351,11 @@ input,select,button{font-family:'Montserrat',sans-serif}
           </div>
           <div class="step-nav">
             <div></div>
-            <button class="btn-next" onclick="goStep(2)">Suivant <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="btn-next" onclick="goStep(2)">Suivant <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
         </div>
 
-        <!-- STEP 2: ARRIVÉE -->
+        <!-- STEP 2 -->
         <div class="step-panel" id="panel2">
           <div class="step-title">Adresse d'arrivée</div>
           <div class="step-desc">Où souhaitez-vous emménager ?</div>
@@ -364,24 +364,24 @@ input,select,button{font-family:'Montserrat',sans-serif}
             <input id="inputArrivee" class="addr-input" type="text" placeholder="Ex: 8 Avenue Victor Hugo, Lyon" autocomplete="off" oninput="onAddr(this,'suggestArrivee')">
             <div class="addr-suggestions" id="suggestArrivee"></div>
           </div>
-          <!-- Distance auto -->
-          <div id="distBadge" style="display:none;background:#f0f4ff;border:1.5px solid #c3d0ff;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;color:#1e30d4;margin-bottom:20px;display:flex;align-items:center;gap:8px">
-            <span>📏</span><span id="distText">Distance estimée : — km</span>
+          <div class="dist-badge" id="distBadge">
+            <span id="distIcon">📏</span>
+            <span id="distText">Calcul de la distance routière…</span>
           </div>
           <div class="step-nav">
             <button class="btn-back" onclick="goStep(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour</button>
-            <button class="btn-next" onclick="goStep(3)">Suivant <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="btn-next" onclick="goStep(3)">Suivant <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
         </div>
 
-        <!-- STEP 3: OBJETS -->
+        <!-- STEP 3 -->
         <div class="step-panel" id="panel3">
           <div class="step-title">Que transportez-vous ?</div>
           <div class="step-desc">Ajoutez vos meubles et cartons. Le volume se calcule en temps réel.</div>
           <div class="item-grid" id="itemGrid"></div>
-          <div style="display:flex;gap:8px;margin-bottom:16px">
-            <input id="customName" class="form-input" type="text" placeholder="Ajouter un objet…" style="font-size:14px">
-            <button onclick="addCustom()" style="background:#1e30d4;color:#fff;border:none;border-radius:10px;padding:0 18px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap">+ Ajouter</button>
+          <div style="display:flex;gap:8px;margin-bottom:12px">
+            <input id="customName" class="form-input" type="text" placeholder="Ajouter un objet personnalisé…" style="font-size:13px">
+            <button onclick="addCustom()" style="background:#1e30d4;color:#fff;border:none;border-radius:10px;padding:0 16px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;flex-shrink:0">+ Ajouter</button>
           </div>
           <div class="truck-bar-wrap">
             <div class="truck-bar-label">
@@ -389,15 +389,15 @@ input,select,button{font-family:'Montserrat',sans-serif}
               <span id="truckPct">0%</span>
             </div>
             <div class="truck-bar-bg"><div class="truck-bar-fill" id="truckFill" style="width:0%"></div></div>
-            <div class="truck-note">⚠️ Estimation indicative — peut varier selon l'encombrement réel</div>
+            <div class="truck-note">⚠️ Estimation indicative · peut varier selon l'encombrement réel</div>
           </div>
           <div class="step-nav">
             <button class="btn-back" onclick="goStep(2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour</button>
-            <button class="btn-next" onclick="goStep(4)">Suivant <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="btn-next" onclick="goStep(4)">Suivant <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
         </div>
 
-        <!-- STEP 4: ÉTAGES -->
+        <!-- STEP 4 -->
         <div class="step-panel" id="panel4">
           <div class="step-title">Étages et accès</div>
           <div class="step-desc">Précisez les conditions d'accès aux deux adresses.</div>
@@ -422,7 +422,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
                   <span class="floor-val" id="fD">0</span>
                   <button class="qty-btn plus" onclick="chFloor('d',1)">+</button>
                 </div>
-                <div style="font-size:11px;color:#94a3b8;margin-bottom:6px">Ascenseur ?</div>
+                <div style="font-size:11px;color:#94a3b8;margin-bottom:5px">Ascenseur ?</div>
                 <div class="asc-row">
                   <button class="toggle-pill on" id="aD1" onclick="setAsc('d',true)">Oui</button>
                   <button class="toggle-pill" id="aD0" onclick="setAsc('d',false)">Non</button>
@@ -435,7 +435,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
                   <span class="floor-val" id="fA">0</span>
                   <button class="qty-btn plus" onclick="chFloor('a',1)">+</button>
                 </div>
-                <div style="font-size:11px;color:#94a3b8;margin-bottom:6px">Ascenseur ?</div>
+                <div style="font-size:11px;color:#94a3b8;margin-bottom:5px">Ascenseur ?</div>
                 <div class="asc-row">
                   <button class="toggle-pill on" id="aA1" onclick="setAsc('a',true)">Oui</button>
                   <button class="toggle-pill" id="aA0" onclick="setAsc('a',false)">Non</button>
@@ -445,14 +445,14 @@ input,select,button{font-family:'Montserrat',sans-serif}
           </div>
           <div class="urgent-box" id="urgentBox" onclick="toggleUrgent()">
             <input type="checkbox" id="urgentChk" style="width:16px;height:16px;accent-color:#f59e0b;flex-shrink:0">
-            <span style="font-size:20px">⚡</span>
+            <span style="font-size:18px">⚡</span>
             <div>
               <div class="urgent-text">Transport urgent (+20%)</div>
               <div class="urgent-sub">Livraison dans les prochaines heures</div>
             </div>
           </div>
-          <div style="margin-bottom:16px">
-            <div style="font-size:13px;font-weight:700;color:#64748b;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Nombre de déménageurs</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:#64748b;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Nombre de déménageurs</div>
             <div class="movers-grid">
               <div class="mover-card sel" id="mv1" onclick="setMovers(1)"><div class="mover-emoji">🧍</div><div class="mover-label">1 déménageur</div><div class="mover-sub">Studio</div></div>
               <div class="mover-card" id="mv2" onclick="setMovers(2)"><div class="mover-emoji">👥</div><div class="mover-label">2 déménageurs</div><div class="mover-sub">Recommandé</div></div>
@@ -461,11 +461,11 @@ input,select,button{font-family:'Montserrat',sans-serif}
           </div>
           <div class="step-nav">
             <button class="btn-back" onclick="goStep(3)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour</button>
-            <button class="btn-next" onclick="goStep(5)">Suivant <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="btn-next" onclick="goStep(5)">Suivant <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
         </div>
 
-        <!-- STEP 5: DATE + COORDONNÉES -->
+        <!-- STEP 5 -->
         <div class="step-panel" id="panel5">
           <div id="formArea">
             <div class="step-title">Date et coordonnées</div>
@@ -474,7 +474,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
               <div class="recap-title">Récapitulatif</div>
               <div class="recap-pills" id="recapPills"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:16px">
+            <div class="form-grid-2" style="margin-bottom:12px">
               <div class="form-row">
                 <label class="form-label">📅 Date souhaitée</label>
                 <input id="fDate" type="date" class="form-input">
@@ -497,7 +497,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
             </div>
             <div class="step-nav">
               <button class="btn-back" onclick="goStep(4)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour</button>
-              <button class="btn-submit" onclick="submitForm()">Obtenir mon devis gratuit 🎉</button>
+              <button class="btn-submit" onclick="submitForm()">Obtenir mon devis 🎉</button>
             </div>
           </div>
           <!-- SUCCESS -->
@@ -505,7 +505,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
             <div class="success-icon">🎉</div>
             <div class="success-title">Demande envoyée !</div>
             <p class="success-sub">Un conseiller vous rappelle <strong>sous 2 heures</strong> au numéro indiqué.</p>
-            <div class="success-price">Devis estimatif : <span id="successAmt"></span>€ TTC</div>
+            <div class="success-price-box">Devis estimatif : <span id="successAmt"></span>€ TTC</div>
             <br>
             <a href="tel:+33142000000" class="btn-call">📞 Appeler directement</a>
           </div>
@@ -520,88 +520,90 @@ input,select,button{font-family:'Montserrat',sans-serif}
         <div class="price-sub">TTC · Prix fixe, sans surprise</div>
         <div class="price-rows">
           <div class="price-row"><span>Base</span><span>38€</span></div>
-          <div class="price-row" id="rowDist"><span>Distance (—)</span><span id="valDist">0€</span></div>
+          <div class="price-row" id="rowDist"><span id="lblDist">Distance (—)</span><span id="valDist">0€</span></div>
           <div class="price-row" id="rowObj"><span>Objets</span><span id="valObj">0€</span></div>
           <div class="price-row" id="rowEtage" style="display:none"><span>Étages</span><span id="valEtage">0€</span></div>
           <div class="price-row" id="rowMovers" style="display:none"><span>Déménageurs sup.</span><span id="valMovers">0€</span></div>
           <div class="price-row" id="rowUrgent" style="display:none"><span>⚡ Urgent +20%</span><span id="valUrgent">0€</span></div>
         </div>
         <div class="price-cta">
-          <button class="btn-submit" style="width:100%;justify-content:center" onclick="document.getElementById('estimateur').scrollIntoView({behavior:'smooth'})">Obtenir mon devis</button>
+          <button class="price-btn" onclick="document.getElementById('estimateur').scrollIntoView({behavior:'smooth'})">Obtenir mon devis gratuit</button>
         </div>
         <div class="price-reassure">
           <div class="price-reassure-item">🛡️ Assuré AXA & Allianz</div>
           <div class="price-reassure-item">✅ Prix fixe, aucun frais caché</div>
           <div class="price-reassure-item">📞 Rappel sous 2 heures</div>
+          <div class="price-reassure-item" id="distModeLabel">📏 Distance : calcul routier réel (ORS)</div>
         </div>
       </div>
+
     </div><!-- /wizard-body -->
   </div><!-- /wizard -->
 </section>
 
-<!-- CONFIANCE -->
+<!-- ═══ CONFIANCE ═══ -->
 <section class="section-confiance">
   <div class="confiance-inner">
     <p class="section-label fade-up">Pourquoi nous choisir</p>
     <h2 class="section-title fade-up">Une promesse, pas juste un prix</h2>
     <div class="confiance-grid">
       <div class="confiance-card fade-up">
-        <div class="confiance-icon" style="background:#f0f4ff"><span>⚡</span></div>
+        <div class="confiance-icon" style="background:#f0f4ff">⚡</div>
         <div class="confiance-name">Rapidité</div>
-        <div class="confiance-desc">Équipes disponibles 7j/7. Réponse garantie sous 2 heures, intervention possible le jour même.</div>
+        <div class="confiance-desc">Équipes dispo 7j/7. Réponse sous 2h, intervention possible le jour même.</div>
       </div>
       <div class="confiance-card fade-up">
-        <div class="confiance-icon" style="background:#f0fdf4"><span>🛡️</span></div>
-        <div class="confiance-name">Sécurité totale</div>
-        <div class="confiance-desc">Couverture AXA et Allianz tous risques. Vos biens sont protégés de A à Z, même les objets fragiles.</div>
+        <div class="confiance-icon" style="background:#f0fdf4">🛡️</div>
+        <div class="confiance-name">Sécurité</div>
+        <div class="confiance-desc">Couverture AXA & Allianz tous risques. Vos biens protégés de A à Z.</div>
       </div>
       <div class="confiance-card fade-up">
-        <div class="confiance-icon" style="background:#fffbeb"><span>💰</span></div>
+        <div class="confiance-icon" style="background:#fffbeb">💰</div>
         <div class="confiance-name">Prix transparent</div>
-        <div class="confiance-desc">Le prix affiché est le prix payé. Aucun frais cachés, aucune surprise à la livraison.</div>
+        <div class="confiance-desc">Le prix affiché est le prix payé. Zéro frais cachés, zéro surprise.</div>
       </div>
       <div class="confiance-card fade-up">
-        <div class="confiance-icon" style="background:#fdf4ff"><span>🤝</span></div>
+        <div class="confiance-icon" style="background:#fdf4ff">🤝</div>
         <div class="confiance-name">Équipe pro</div>
-        <div class="confiance-desc">Déménageurs formés, expérimentés et courtois. Nous traitons vos affaires comme les nôtres.</div>
+        <div class="confiance-desc">Déménageurs formés et courtois. Vos affaires traitées comme les nôtres.</div>
       </div>
       <div class="confiance-card fade-up">
-        <div class="confiance-icon" style="background:#fff1f2"><span>📍</span></div>
-        <div class="confiance-name">Partout en France</div>
-        <div class="confiance-desc">Toute la France métropolitaine couverte. Déménagements longue distance ou en ville, on s'adapte.</div>
+        <div class="confiance-icon" style="background:#fff1f2">📍</div>
+        <div class="confiance-name">Toute la France</div>
+        <div class="confiance-desc">Métropole entière couverte. Courte ou longue distance, on s'adapte.</div>
       </div>
       <div class="confiance-card fade-up">
-        <div class="confiance-icon" style="background:#f0fdfa"><span>♻️</span></div>
+        <div class="confiance-icon" style="background:#f0fdfa">♻️</div>
         <div class="confiance-name">Éco-responsable</div>
-        <div class="confiance-desc">Véhicules récents et optimisés. Cartons réutilisables fournis pour réduire notre empreinte carbone.</div>
+        <div class="confiance-desc">Véhicules optimisés, cartons réutilisables. On réduit notre empreinte.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS BANDE -->
+<!-- ═══ STATS ═══ -->
 <section class="section-stats">
   <div class="stats-grid">
-    <div class="fade-up">
+    <div class="fade-up" style="text-align:center">
       <div class="stat-num"><span class="stat-accent">4.9</span>/5</div>
       <div class="stat-label">Note Google · 386 avis</div>
     </div>
-    <div class="fade-up">
+    <div class="fade-up" style="text-align:center">
       <div class="stat-num">+<span class="stat-accent">1 200</span></div>
       <div class="stat-label">Déménagements réalisés</div>
     </div>
-    <div class="fade-up">
+    <div class="fade-up" style="text-align:center">
       <div class="stat-num"><span class="stat-accent">2h</span></div>
       <div class="stat-label">Délai de rappel garanti</div>
     </div>
-    <div class="fade-up">
+    <div class="fade-up" style="text-align:center">
       <div class="stat-num"><span class="stat-accent">7j</span>/7</div>
       <div class="stat-label">Disponibilité équipe</div>
     </div>
   </div>
 </section>
 
-<!-- TÉMOIGNAGES -->
+<!-- ═══ TÉMOIGNAGES ═══ -->
 <section class="section-testi">
   <div style="max-width:1100px;margin:0 auto">
     <p class="section-label fade-up">Témoignages</p>
@@ -617,7 +619,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
       </div>
       <div class="testi-card fade-up">
         <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">Devis obtenu en 3 minutes via le calculateur. Les 2 déménageurs sont arrivés à 8h pile, travail rapide et professionnel. Je recommande vivement à tous mes proches !</p>
+        <p class="testi-text">Devis obtenu en 3 minutes. Les 2 déménageurs sont arrivés à 8h pile, travail rapide et professionnel. Je recommande vivement à tous mes proches !</p>
         <div class="testi-author">
           <div class="testi-avatar" style="background:#fef3c7;color:#b45309">MR</div>
           <div><div class="testi-name">Marc R.</div><div class="testi-route">Lyon → Paris · 3 pièces</div></div>
@@ -625,7 +627,7 @@ input,select,button{font-family:'Montserrat',sans-serif}
       </div>
       <div class="testi-card fade-up">
         <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">Déménagement en urgence un dimanche. Rappelés en moins d'une heure, équipe disponible dans l'après-midi. Service impeccable, prix honnête, je suis bluffée.</p>
+        <p class="testi-text">Déménagement en urgence un dimanche. Rappelés en moins d'une heure, équipe disponible l'après-midi. Service impeccable, prix honnête, je suis bluffée.</p>
         <div class="testi-author">
           <div class="testi-avatar" style="background:#dcfce7;color:#15803d">AC</div>
           <div><div class="testi-name">Amélie C.</div><div class="testi-route">Marseille → Nice · Studio</div></div>
@@ -635,14 +637,14 @@ input,select,button{font-family:'Montserrat',sans-serif}
   </div>
 </section>
 
-<!-- CTA FINAL -->
+<!-- ═══ CTA FINAL ═══ -->
 <section class="section-cta">
   <div class="cta-inner fade-up">
     <h2>Prêt à déménager<br><em style="font-style:italic;color:#1e30d4">sans stress ?</em></h2>
-    <p>Obtenez votre estimation gratuite en 2 minutes. Un conseiller vous rappelle sous 2 heures.</p>
-    <button class="btn-hero" onclick="document.getElementById('estimateur').scrollIntoView({behavior:'smooth'})">
+    <p>Estimation gratuite en 2 minutes. Un conseiller vous rappelle sous 2 heures.</p>
+    <button class="btn-hero" style="font-size:15px;padding:15px 28px" onclick="document.getElementById('estimateur').scrollIntoView({behavior:'smooth'})">
       Calculer mon devis gratuit
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
     <div class="cta-badges">
       <div class="cta-badge">✅ Sans engagement</div>
@@ -652,27 +654,27 @@ input,select,button{font-family:'Montserrat',sans-serif}
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">
+      <div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-          <span style="font-size:22px">🚚</span>
-          <span style="color:#fff;font-weight:800;font-size:18px">TransitPro</span>
+          <span style="font-size:20px">🚚</span>
+          <span style="color:#fff;font-weight:800;font-size:17px">TransitPro</span>
         </div>
-        <p>Spécialiste du déménagement en France. Équipe professionnelle, prix transparents, satisfaction garantie.</p>
+        <p style="color:#475569;font-size:13px;max-width:240px;line-height:1.6;margin-top:6px">Spécialiste du déménagement en France. Équipe pro, prix transparents, satisfaction garantie.</p>
       </div>
       <div>
-        <div class="footer-contact-title">Nous contacter</div>
+        <div class="footer-col-title">Contact</div>
         <a href="tel:+33142000000" class="footer-phone">📞 01 42 00 00 00</a>
-        <div class="footer-phone-note">Disponible 7j/7 · 7h – 20h</div>
+        <div class="footer-phone-note">Disponible 7j/7 · 7h–20h</div>
       </div>
       <div>
-        <div class="footer-contact-title">Assurances</div>
+        <div class="footer-col-title">Assurances partenaires</div>
         <div style="display:flex;gap:10px;margin-top:6px">
-          <div style="background:#fff;border-radius:8px;padding:6px 14px;font-weight:800;color:#111750;font-size:14px">AXA</div>
-          <div style="background:#fff;border-radius:8px;padding:6px 14px;font-weight:800;color:#111750;font-size:14px">Allianz</div>
+          <div style="background:#fff;border-radius:8px;padding:5px 12px;font-weight:800;color:#111750;font-size:13px">AXA</div>
+          <div style="background:#fff;border-radius:8px;padding:5px 12px;font-weight:800;color:#111750;font-size:13px">Allianz</div>
         </div>
       </div>
     </div>
@@ -687,13 +689,19 @@ input,select,button{font-family:'Montserrat',sans-serif}
   </div>
 </footer>
 
-<!-- Sticky call -->
 <a href="tel:+33142000000" class="sticky-cta" title="Appeler">📞</a>
 
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
 <script>
-// ═══════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════
+'use strict';
+
+// ─── CONFIG ─────────────────────────────────────
+// Clé demo ORS publique (5000 req/jour) — remplace par la tienne sur openrouteservice.org
+const ORS_KEY = '5b3ce3597851110001cf6248a2e2b44aa88e41db9c515d4258e8c668';
+
+// ─── STATE ──────────────────────────────────────
 const S = {
   step: 1,
   addrDepart: '', addrArrivee: '',
@@ -705,18 +713,16 @@ const S = {
   movers: 1,
 };
 
-// ═══════════════════════════════════════════════
-// ITEMS
-// ═══════════════════════════════════════════════
+// ─── ITEMS ──────────────────────────────────────
 const ITEMS = [
-  {id:'canape',   label:'Canapé',          emoji:'🛋️', vol:3.0, price:4},
-  {id:'lit',      label:'Lit double',      emoji:'🛏️', vol:2.0, price:3},
-  {id:'armoire',  label:'Armoire',         emoji:'🗄️', vol:2.5, price:3},
-  {id:'table',    label:'Table',           emoji:'🪑', vol:1.0, price:2},
-  {id:'frigo',    label:'Réfrigérateur',   emoji:'🧊', vol:0.8, price:2},
-  {id:'machine',  label:'Machine à laver', emoji:'🫧', vol:0.6, price:2},
-  {id:'bureau',   label:'Bureau',          emoji:'🖥️', vol:1.2, price:2},
-  {id:'carton',   label:'Carton',          emoji:'📦', vol:0.1, price:0.5},
+  {id:'canape',  label:'Canapé',         emoji:'🛋️', vol:3.0, price:4},
+  {id:'lit',     label:'Lit double',     emoji:'🛏️', vol:2.0, price:3},
+  {id:'armoire', label:'Armoire',        emoji:'🗄️', vol:2.5, price:3},
+  {id:'table',   label:'Table',          emoji:'🪑', vol:1.0, price:2},
+  {id:'frigo',   label:'Réfrigérateur',  emoji:'🧊', vol:0.8, price:2},
+  {id:'machine', label:'Lave-linge',     emoji:'🫧', vol:0.6, price:2},
+  {id:'bureau',  label:'Bureau',         emoji:'🖥️', vol:1.2, price:2},
+  {id:'carton',  label:'Carton',         emoji:'📦', vol:0.1, price:0.5},
 ];
 let customItems = [];
 const QTY = {};
@@ -724,279 +730,304 @@ ITEMS.forEach(i => QTY[i.id] = 0);
 
 function renderItems() {
   const all = [...ITEMS, ...customItems];
-  document.getElementById('itemGrid').innerHTML = all.map(item => `
-    <div class="item-card${(QTY[item.id]||0)>0?' has-qty':''}" id="ic_${item.id}">
-      <div class="item-emoji">${item.emoji||'📦'}</div>
-      <div class="item-name">${item.label}</div>
-      <div class="item-vol">${item.vol}m³</div>
-      <div class="item-qty">
-        <button class="qty-btn minus" onclick="chQty('${item.id}',-1)">−</button>
-        <span class="qty-val" id="qv_${item.id}">${QTY[item.id]||0}</span>
-        <button class="qty-btn plus" onclick="chQty('${item.id}',1)">+</button>
-      </div>
-    </div>`).join('');
+  document.getElementById('itemGrid').innerHTML = all.map(item => {
+    const q = QTY[item.id] || 0;
+    return '<div class="item-card' + (q > 0 ? ' has-qty' : '') + '" id="ic_' + item.id + '">' +
+      '<div class="item-emoji">' + item.emoji + '</div>' +
+      '<div class="item-name">' + item.label + '</div>' +
+      '<div class="item-vol">' + item.vol + 'm³</div>' +
+      '<div class="item-qty">' +
+        '<button class="qty-btn minus" onclick="chQty(\'' + item.id + '\',-1)">−</button>' +
+        '<span class="qty-val" id="qv_' + item.id + '">' + q + '</span>' +
+        '<button class="qty-btn plus" onclick="chQty(\'' + item.id + '\',1)">+</button>' +
+      '</div></div>';
+  }).join('');
 }
 
 function chQty(id, d) {
-  QTY[id] = Math.max(0, (QTY[id]||0) + d);
-  const qv = document.getElementById('qv_'+id);
-  const ic = document.getElementById('ic_'+id);
-  if(qv) qv.textContent = QTY[id];
-  if(ic) ic.classList.toggle('has-qty', QTY[id]>0);
-  calcPrice();
-  updateTruck();
+  QTY[id] = Math.max(0, (QTY[id] || 0) + d);
+  var el = document.getElementById('qv_' + id);
+  var ic = document.getElementById('ic_' + id);
+  if (el) el.textContent = QTY[id];
+  if (ic) ic.classList.toggle('has-qty', QTY[id] > 0);
+  calcPrice(); updateTruck();
 }
 
 function addCustom() {
-  const n = document.getElementById('customName');
-  const label = n.value.trim();
-  if(!label) return;
-  const id = 'c_'+Date.now();
-  customItems.push({id, label, emoji:'📦', vol:0.5, price:1});
+  var n = document.getElementById('customName');
+  var label = n.value.trim();
+  if (!label) return;
+  var id = 'c_' + Date.now();
+  customItems.push({id:id, label:label, emoji:'📦', vol:0.5, price:1});
   QTY[id] = 1;
   n.value = '';
-  renderItems();
-  calcPrice();
-  updateTruck();
+  renderItems(); calcPrice(); updateTruck();
 }
 
 function calcVol() {
-  return [...ITEMS,...customItems].reduce((s,i)=>s+(QTY[i.id]||0)*i.vol,0);
+  return [...ITEMS, ...customItems].reduce(function(s,i){ return s + (QTY[i.id]||0)*i.vol; }, 0);
 }
 function calcObjPrice() {
-  return [...ITEMS,...customItems].reduce((s,i)=>s+(QTY[i.id]||0)*i.price,0);
+  return [...ITEMS, ...customItems].reduce(function(s,i){ return s + (QTY[i.id]||0)*i.price; }, 0);
 }
 function updateTruck() {
-  const pct = Math.min(Math.round(calcVol()/12*100),100);
-  document.getElementById('truckPct').textContent = pct+'%';
-  document.getElementById('truckFill').style.width = pct+'%';
+  var pct = Math.min(Math.round(calcVol() / 12 * 100), 100);
+  document.getElementById('truckPct').textContent = pct + '%';
+  document.getElementById('truckFill').style.width = pct + '%';
 }
 
-// ═══════════════════════════════════════════════
-// ADDRESS AUTOCOMPLETE (api-adresse.data.gouv.fr)
-// ═══════════════════════════════════════════════
-let addrTimers = {};
-const COORDS = {};
-// Store suggestion data by box id → array of {label, lat, lon}
-const SUGG_DATA = {};
+// ─── ADDRESS AUTOCOMPLETE ───────────────────────
+var addrTimers = {};
+var COORDS = {};
+var SUGG_DATA = {};
 
-async function onAddr(input, suggestId) {
-  const q = input.value.trim();
-  const box = document.getElementById(suggestId);
+function onAddr(input, suggestId) {
+  var q = input.value.trim();
+  var box = document.getElementById(suggestId);
   if (q.length < 3) { box.classList.remove('open'); return; }
   clearTimeout(addrTimers[suggestId]);
-  addrTimers[suggestId] = setTimeout(async () => {
-    try {
-      const r = await fetch('https://api-adresse.data.gouv.fr/search/?q=' + encodeURIComponent(q) + '&limit=5');
-      const d = await r.json();
-      const features = d.features || [];
-      if (!features.length) { box.classList.remove('open'); return; }
-
-      // Store data for click handler
-      SUGG_DATA[suggestId] = features.map(f => ({
-        label: f.properties.label,
-        context: f.properties.context || '',
-        lat: f.geometry.coordinates[1],
-        lon: f.geometry.coordinates[0]
-      }));
-
-      // Render items
-      box.innerHTML = SUGG_DATA[suggestId].map((item, idx) =>
-        '<div class="addr-sugg-item" data-idx="' + idx + '" data-box="' + suggestId + '" data-input="' + input.id + '">' +
-          '<span class="sugg-icon">📍</span>' +
-          '<div><div class="sugg-main">' + item.label + '</div>' +
-          '<div class="sugg-sub">' + item.context + '</div></div>' +
-        '</div>'
-      ).join('');
-
-      // Attach click listeners directly (no inline onclick)
-      box.querySelectorAll('.addr-sugg-item').forEach(el => {
-        el.addEventListener('mousedown', function(e) {
-          e.preventDefault(); // prevent input blur before click fires
-          const idx = parseInt(this.dataset.idx);
-          const boxId = this.dataset.box;
-          const inputId = this.dataset.input;
-          const chosen = SUGG_DATA[boxId][idx];
-          pickAddr(inputId, boxId, chosen.label, chosen.lat, chosen.lon);
+  addrTimers[suggestId] = setTimeout(function() {
+    fetch('https://api-adresse.data.gouv.fr/search/?q=' + encodeURIComponent(q) + '&limit=5')
+      .then(function(r){ return r.json(); })
+      .then(function(d) {
+        var features = d.features || [];
+        if (!features.length) { box.classList.remove('open'); return; }
+        SUGG_DATA[suggestId] = features.map(function(f) {
+          return {
+            label: f.properties.label,
+            context: f.properties.context || '',
+            lat: f.geometry.coordinates[1],
+            lon: f.geometry.coordinates[0]
+          };
         });
-      });
-
-      box.classList.add('open');
-    } catch(e) { box.classList.remove('open'); }
+        box.innerHTML = SUGG_DATA[suggestId].map(function(item, idx) {
+          return '<div class="addr-sugg-item" data-idx="' + idx + '" data-box="' + suggestId + '" data-input="' + input.id + '">' +
+            '<span class="sugg-icon">📍</span>' +
+            '<div><div class="sugg-main">' + item.label + '</div>' +
+            '<div class="sugg-sub">' + item.context + '</div></div></div>';
+        }).join('');
+        box.querySelectorAll('.addr-sugg-item').forEach(function(el) {
+          el.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            var idx = parseInt(this.dataset.idx);
+            var boxId = this.dataset.box;
+            var inputId = this.dataset.input;
+            var chosen = SUGG_DATA[boxId][idx];
+            pickAddr(inputId, boxId, chosen.label, chosen.lat, chosen.lon);
+          });
+        });
+        box.classList.add('open');
+      })
+      .catch(function(){ box.classList.remove('open'); });
   }, 280);
 }
 
 function pickAddr(inputId, suggestId, label, lat, lon) {
   document.getElementById(inputId).value = label;
   document.getElementById(suggestId).classList.remove('open');
-  COORDS[inputId] = { lat: lat, lon: lon };
+  COORDS[inputId] = {lat: lat, lon: lon};
   if (inputId === 'inputDepart') S.addrDepart = label;
   if (inputId === 'inputArrivee') S.addrArrivee = label;
-  // Always try to calc distance whenever either address is picked
-  calcDist();
+  // Trigger ORS distance whenever we have both coords
+  if (COORDS.inputDepart && COORDS.inputArrivee) {
+    calcDistORS();
+  }
   calcPrice();
 }
 
-function calcDist() {
-  if (!COORDS.inputDepart || !COORDS.inputArrivee) return;
-  const R = 6371;
-  const lat1 = COORDS.inputDepart.lat * Math.PI / 180;
-  const lat2 = COORDS.inputArrivee.lat * Math.PI / 180;
-  const dLat = lat2 - lat1;
-  const dLon = (COORDS.inputArrivee.lon - COORDS.inputDepart.lon) * Math.PI / 180;
-  const a = Math.sin(dLat/2)**2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon/2)**2;
-  const km = Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
-  S.distKm = km;
-  const badge = document.getElementById('distBadge');
-  if (badge) badge.style.display = 'flex';
-  const txt = document.getElementById('distText');
-  if (txt) txt.textContent = 'Distance estimée : ' + km + ' km';
-  const rowLabel = document.getElementById('rowDist');
-  if (rowLabel) rowLabel.querySelector('span:first-child').textContent = 'Distance (' + km + ' km)';
-}
-
-// Close suggestions on outside click (blur on input)
 document.addEventListener('click', function(e) {
   document.querySelectorAll('.addr-suggestions').forEach(function(b) {
     if (!b.contains(e.target)) b.classList.remove('open');
   });
 });
 
-// ═══════════════════════════════════════════════
-// ACCESS / FLOORS
-// ═══════════════════════════════════════════════
+// ─── OPENROUTESERVICE DISTANCE ──────────────────
+function showDistBadge(state, text) {
+  var badge = document.getElementById('distBadge');
+  var txt   = document.getElementById('distText');
+  badge.style.display = 'flex';
+  badge.className = 'dist-badge ' + state;
+  txt.textContent = text;
+}
+
+function calcDistORS() {
+  var dep = COORDS.inputDepart;
+  var arr = COORDS.inputArrivee;
+  if (!dep || !arr) return;
+
+  showDistBadge('loading', '⏳ Calcul de la distance routière…');
+
+  var body = {
+    coordinates: [
+      [dep.lon, dep.lat],
+      [arr.lon, arr.lat]
+    ]
+  };
+
+  fetch('https://api.openrouteservice.org/v2/directions/driving-car', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': ORS_KEY
+    },
+    body: JSON.stringify(body)
+  })
+  .then(function(r) {
+    if (!r.ok) throw new Error('ORS ' + r.status);
+    return r.json();
+  })
+  .then(function(data) {
+    var meters = data.routes[0].summary.distance;
+    var km = Math.round(meters / 1000);
+    S.distKm = km;
+    showDistBadge('', '📏 Distance routière réelle : ' + km + ' km');
+    document.getElementById('lblDist').textContent = 'Distance (' + km + ' km)';
+    calcPrice();
+  })
+  .catch(function(err) {
+    console.warn('ORS failed, fallback to Haversine:', err);
+    // Fallback: Haversine si ORS échoue (quota ou réseau)
+    var R = 6371;
+    var lat1 = dep.lat * Math.PI / 180;
+    var lat2 = arr.lat * Math.PI / 180;
+    var dLat = lat2 - lat1;
+    var dLon = (arr.lon - dep.lon) * Math.PI / 180;
+    var a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)*Math.sin(dLon/2);
+    var km = Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+    S.distKm = km;
+    showDistBadge('error', '⚠️ Distance estimée (vol d\'oiseau) : ' + km + ' km');
+    document.getElementById('lblDist').textContent = 'Distance (~' + km + ' km)';
+    document.getElementById('distModeLabel').textContent = '⚠️ Distance estimative (fallback)';
+    calcPrice();
+  });
+}
+
+// ─── PRICE ENGINE ───────────────────────────────
+function calcPrice() {
+  var base  = 38;
+  var dist  = S.distKm;
+  var obj   = Math.round(calcObjPrice());
+  var etage = 0;
+  if (S.access === 'etage') {
+    if (!S.ascD && S.floorD > 0) etage += S.floorD * 8;
+    if (!S.ascA && S.floorA > 0) etage += S.floorA * 8;
+  }
+  var movers = (S.movers - 1) * 20;
+  var sub    = base + dist + obj + etage + movers;
+  var urgent = S.urgent ? Math.round(sub * 0.2) : 0;
+  var total  = sub + urgent;
+
+  document.getElementById('priceTotal').textContent = total;
+  document.getElementById('valDist').textContent    = dist + '€';
+  document.getElementById('valObj').textContent     = obj + '€';
+
+  var rowEtage  = document.getElementById('rowEtage');
+  var rowMovers = document.getElementById('rowMovers');
+  var rowUrgent = document.getElementById('rowUrgent');
+
+  if (etage > 0)   { rowEtage.style.display  = ''; document.getElementById('valEtage').textContent  = etage + '€'; }
+  else               rowEtage.style.display  = 'none';
+  if (movers > 0)  { rowMovers.style.display = ''; document.getElementById('valMovers').textContent = movers + '€'; }
+  else               rowMovers.style.display = 'none';
+  if (S.urgent)    { rowUrgent.style.display = ''; document.getElementById('valUrgent').textContent = urgent + '€'; }
+  else               rowUrgent.style.display = 'none';
+}
+
+// ─── ACCESS / FLOORS ────────────────────────────
 function setAccess(type) {
   S.access = type;
-  document.getElementById('acc-trottoir').classList.toggle('sel', type==='trottoir');
-  document.getElementById('acc-etage').classList.toggle('sel', type==='etage');
-  document.getElementById('floorSection').style.display = type==='etage'?'block':'none';
+  document.getElementById('acc-trottoir').classList.toggle('sel', type === 'trottoir');
+  document.getElementById('acc-etage').classList.toggle('sel', type === 'etage');
+  document.getElementById('floorSection').style.display = type === 'etage' ? 'block' : 'none';
   calcPrice();
 }
 
 function chFloor(side, d) {
-  if(side==='d') { S.floorD = Math.max(0,S.floorD+d); document.getElementById('fD').textContent=S.floorD; }
-  else           { S.floorA = Math.max(0,S.floorA+d); document.getElementById('fA').textContent=S.floorA; }
+  if (side === 'd') { S.floorD = Math.max(0, S.floorD + d); document.getElementById('fD').textContent = S.floorD; }
+  else              { S.floorA = Math.max(0, S.floorA + d); document.getElementById('fA').textContent = S.floorA; }
   calcPrice();
 }
 
 function setAsc(side, val) {
-  if(side==='d') {
-    S.ascD=val;
-    document.getElementById('aD1').classList.toggle('on',val);
-    document.getElementById('aD0').classList.toggle('on',!val);
+  if (side === 'd') {
+    S.ascD = val;
+    document.getElementById('aD1').classList.toggle('on',  val);
+    document.getElementById('aD0').classList.toggle('on', !val);
   } else {
-    S.ascA=val;
-    document.getElementById('aA1').classList.toggle('on',val);
-    document.getElementById('aA0').classList.toggle('on',!val);
+    S.ascA = val;
+    document.getElementById('aA1').classList.toggle('on',  val);
+    document.getElementById('aA0').classList.toggle('on', !val);
   }
   calcPrice();
 }
 
 function toggleUrgent() {
-  S.urgent=!S.urgent;
-  document.getElementById('urgentChk').checked=S.urgent;
-  document.getElementById('urgentBox').classList.toggle('sel',S.urgent);
+  S.urgent = !S.urgent;
+  document.getElementById('urgentChk').checked = S.urgent;
+  document.getElementById('urgentBox').classList.toggle('sel', S.urgent);
   calcPrice();
 }
 
 function setMovers(n) {
-  S.movers=n;
-  [1,2,3].forEach(i=>document.getElementById('mv'+i).classList.toggle('sel',i===n));
+  S.movers = n;
+  [1,2,3].forEach(function(i){ document.getElementById('mv'+i).classList.toggle('sel', i === n); });
   calcPrice();
 }
 
-// ═══════════════════════════════════════════════
-// PRICE ENGINE
-// ═══════════════════════════════════════════════
-function calcPrice() {
-  const base = 38;
-  const dist = S.distKm;
-  const obj = Math.round(calcObjPrice());
-  let etage = 0;
-  if(S.access==='etage') {
-    if(!S.ascD && S.floorD>0) etage += S.floorD*8;
-    if(!S.ascA && S.floorA>0) etage += S.floorA*8;
-  }
-  const movers = (S.movers-1)*20;
-  const sub = base+dist+obj+etage+movers;
-  const urgent = S.urgent ? Math.round(sub*.2) : 0;
-  const total = sub+urgent;
-
-  document.getElementById('priceTotal').textContent = total;
-  document.getElementById('valDist').textContent = dist+'€';
-  document.getElementById('valObj').textContent = obj+'€';
-  if(etage>0){ document.getElementById('rowEtage').style.display=''; document.getElementById('valEtage').textContent=etage+'€'; }
-  else document.getElementById('rowEtage').style.display='none';
-  if(movers>0){ document.getElementById('rowMovers').style.display=''; document.getElementById('valMovers').textContent=movers+'€'; }
-  else document.getElementById('rowMovers').style.display='none';
-  if(S.urgent){ document.getElementById('rowUrgent').style.display=''; document.getElementById('valUrgent').textContent=urgent+'€'; }
-  else document.getElementById('rowUrgent').style.display='none';
-}
-
-// ═══════════════════════════════════════════════
-// STEP NAVIGATION
-// ═══════════════════════════════════════════════
+// ─── STEP NAVIGATION ────────────────────────────
 function goStep(n) {
-  // hide all panels
-  document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel'+n).classList.add('active');
-  // update tabs
-  for(let i=1;i<=5;i++){
-    const tab=document.getElementById('tab'+i);
-    const dot=tab.querySelector('.step-tab-dot');
-    tab.classList.remove('active','done');
-    if(i<n){ tab.classList.add('done'); dot.textContent='✓'; }
-    else if(i===n){ tab.classList.add('active'); }
+  document.querySelectorAll('.step-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('panel' + n).classList.add('active');
+  for (var i = 1; i <= 5; i++) {
+    var tab = document.getElementById('tab' + i);
+    var dot = document.getElementById('dot' + i);
+    tab.classList.remove('active', 'done');
+    if (i < n)       { tab.classList.add('done');   dot.textContent = '✓'; }
+    else if (i === n){ tab.classList.add('active'); }
   }
-  S.step=n;
-  if(n===3) renderItems();
-  if(n===5) renderRecap();
+  S.step = n;
+  if (n === 3) renderItems();
+  if (n === 5) renderRecap();
 }
 
 function renderRecap() {
-  const pills = [];
-  if(S.addrDepart) pills.push('📍 '+S.addrDepart.split(',')[0]);
-  if(S.addrArrivee) pills.push('🏠 '+S.addrArrivee.split(',')[0]);
-  const vol = calcVol();
-  if(vol>0) pills.push('📦 '+vol.toFixed(1)+' m³');
-  if(S.distKm) pills.push('📏 '+S.distKm+' km');
-  document.getElementById('recapPills').innerHTML = pills.map(p=>`<span class="recap-pill">${p}</span>`).join('');
+  var pills = [];
+  if (S.addrDepart)  pills.push('📍 ' + S.addrDepart.split(',')[0]);
+  if (S.addrArrivee) pills.push('🏠 ' + S.addrArrivee.split(',')[0]);
+  var vol = calcVol();
+  if (vol > 0)       pills.push('📦 ' + vol.toFixed(1) + ' m³');
+  if (S.distKm)      pills.push('📏 ' + S.distKm + ' km (route)');
+  document.getElementById('recapPills').innerHTML = pills.map(function(p){
+    return '<span class="recap-pill">' + p + '</span>';
+  }).join('');
 }
 
-// ═══════════════════════════════════════════════
-// SUBMIT
-// ═══════════════════════════════════════════════
+// ─── SUBMIT ─────────────────────────────────────
 function submitForm() {
-  const nom = document.getElementById('fNom').value.trim();
-  const tel = document.getElementById('fTel').value.trim();
-  if(!nom||!tel){ alert('Merci de renseigner votre nom et votre téléphone.'); return; }
-  const total = document.getElementById('priceTotal').textContent;
-  document.getElementById('successAmt').textContent = total;
-  document.getElementById('formArea').style.display='none';
+  var nom = document.getElementById('fNom').value.trim();
+  var tel = document.getElementById('fTel').value.trim();
+  if (!nom || !tel) { alert('Merci de renseigner votre nom et votre téléphone.'); return; }
+  document.getElementById('successAmt').textContent = document.getElementById('priceTotal').textContent;
+  document.getElementById('formArea').style.display = 'none';
   document.getElementById('successState').classList.add('show');
 }
 
-// ═══════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════
-// ── SCROLL: compact nav ──
+// ─── SCROLL: NAV COMPACT ────────────────────────
 window.addEventListener('scroll', function() {
-  var nav = document.querySelector('.nav');
-  if (window.scrollY > 40) { nav.classList.add('scrolled'); }
-  else { nav.classList.remove('scrolled'); }
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
 });
 
-document.addEventListener('DOMContentLoaded',()=>{
+// ─── INIT ───────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
   calcPrice();
-  // Set default date +7 days
-  const d=new Date(); d.setDate(d.getDate()+7);
-  document.getElementById('fDate').value=d.toISOString().split('T')[0];
+  var d = new Date(); d.setDate(d.getDate() + 7);
+  document.getElementById('fDate').value = d.toISOString().split('T')[0];
 
-  // Fade-up
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
-  },{threshold:.12});
-  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  // Fade-up observer
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
 });
 </script>
 </body>
